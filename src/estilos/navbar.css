@@ -1,0 +1,164 @@
+/* navbar general */
+#navbar{
+  display: grid;
+  grid-template-columns: 10% 15% 60% 15%;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  justify-items: center;
+  height: 75px;
+  width: 100%;
+  box-shadow: 0 2px 5px grey;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+/* boton desplegable */
+#navbar_items_boton{
+  height: 25px;
+  width: 25px;
+  margin: 10px;
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+#navbar_items_boton:hover{
+  transform: scale(120%);
+}
+
+/* logo */
+#logo_container{
+  position: relative;
+  display: grid;
+  background-size: 120%;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 40% 60%;
+  background-color: rgba(187, 3, 3, 0.767);
+  border-radius: 100%;
+  user-select: none;
+}
+
+#logo{
+  color: rgb(255, 255, 255);
+  background-color: rgb(10, 85, 8);
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+}
+
+#marca{
+  color: white;
+  text-align: left;
+  text-shadow: 2px 2px 2px rgb(61, 61, 61), -2px 2px 2px rgb(61, 61, 61), 2px -2px 2px rgb(61, 61, 61), -2px -2px 2px rgb(61, 61, 61);
+  font-family: 'Lobster Two', cursive;
+  line-height: .9;
+  font-size: 20px;
+}
+
+/* items del navbar */
+#navbar_item_container{
+  display: grid;
+  gap: 40px;
+  margin-left: 10px;
+  grid-template-columns: 33% 33% 33%;
+  max-width: 783px;
+  text-align: center;
+  align-items: center;
+  justify-self: start;
+  cursor: pointer;
+}
+
+.navbar_item{
+  padding: 7%;
+  border-color: transparent;
+  user-select: none;
+}
+
+.navbar_item:hover{
+  transition-duration: .3s;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  border-right: 1px solid rgb(211, 211, 211);
+  border-radius: 5%;
+  box-sizing: border-box;
+}
+
+/* boton de sesion*/
+#iniciar_sesion{
+  height: 55%;
+  width: 65%;
+  padding: 5px;
+  background-color: #006400;
+  color: white;
+}
+
+#perfil_container{
+  display: grid;
+  height: 70%;
+  width: 80%;
+  grid-template-columns: 30% 70%;
+  gap: 5px;
+}
+
+#carr_logo_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8B0000;
+}
+
+#carr_logo{
+  color: white;
+  height: 60%;
+  width: 60%;
+}
+
+#perfil{
+  background-color: #8B0000;
+  color: white
+}
+
+#iniciar_sesion, #perfil{
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+#iniciar_sesion:hover, #perfil:hover, #carr_logo_container:hover{
+  box-shadow: 0 0 10px grey;
+  transition-duration: .3s;
+}
+
+@media (min-width: 783px){
+  #navbar{
+    grid-template-columns: 20% 60% 20%;
+  }
+
+  #navbar_items_boton{
+    display: none;
+  }
+
+  #logo_container{
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 782px){
+  #navbar{
+    grid-template-columns: 13% 53% 33%;
+  }
+
+  #navbar_item_container{
+    display: none
+  }
+}
+
+
+
+
+
+

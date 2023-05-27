@@ -1,1 +1,70 @@
-https://dev.to/shivampawar/setup-webpack-and-babel-for-a-react-js-application-24f5
+creado proyecto de nodeJS con npm init 
+
+instaladas dependencias de React (react, react-dom)
+
+instaladas y configuradas dependencias necesarias para el correcto funcionamiento de React:
+
+Babel: brinda polyfills para aportar funcionalidad moderna a versiones previas de Javascript y para interpretar codigo js no estandar como JSX
+
+WebPack: es un bundler o empaquetador, que puede analizar el grafo de dependencias de los proyectos y crear versiones de produccion que seran compactadas para un mejor rendimiento en la web
+tambien brinda la posibilidad de tener un servidor de desarrollo 
+
+css-loader style-loader: permite la interpretacion de archivos CSS en componentes de React, en forma de import './estilos.css' por ejemplo
+
+documentacion: https://dev.to/shivampawar/setup-webpack-and-babel-for-a-react-js-application-24f5
+
+instaladas dependencias de typescript (typescript, y los tipos necesarios para React)
+
+configuracion de TS:
+
+tsconfig.json:
+
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "target": "es6",
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
+
+hay que modificar webpackconfig.js para incluirlo:
+
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.tsx',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'ts-loader',
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
+};
+
+todos los archivos .jsx deberan ser cambiados a la extension .tsx

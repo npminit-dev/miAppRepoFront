@@ -1,0 +1,24 @@
+#es_contenedor{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+}
+
+#es_contenedor_es{
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  justify-items: center;
+}
+
+.estrella{
+  display: inline-block;
+  color: #FFD700;
+  height: 80%;
+  width: 80%;
+}
+
+#es_info{
+  text-align: center;
+}
+
+
