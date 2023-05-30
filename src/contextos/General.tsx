@@ -13,7 +13,9 @@ const defValues: GeneralTipo = {
   total: 0.0,
   settotal: (): null => null,
   seleccion: 'INICIO',
-  setseleccion: (): null => null
+  setseleccion: (): null => null,
+  anchopantalla: window.innerWidth,
+  setanchopantalla: (): null => null
 }
 
 export const General = createContext<GeneralTipo>(defValues);
@@ -35,10 +37,15 @@ export default function GeneralProvider({children}: any): JSX.Element{
   const [carrito, setcarrito] = useState([] as Carrito_Prod[])
   const [total, settotal] = useState(0)
   const [seleccion, setseleccion] = useState('INICIO' as Seleccion)
+  const [anchopantalla, setanchopantalla] = useState(window.innerWidth)
+
+  window.addEventListener('resize', () => {
+    setanchopantalla(window.innerWidth)
+  })
 
   return (
     <General.Provider value={{
-      jwt, setjwt, datosusuario, setdatosusuario, productos, setproductos, carrito, setcarrito, total, settotal, seleccion, setseleccion
+      jwt, setjwt, datosusuario, setdatosusuario, productos, setproductos, carrito, setcarrito, total, settotal, seleccion, setseleccion, anchopantalla, setanchopantalla
     }}>
       {children}
     </General.Provider>

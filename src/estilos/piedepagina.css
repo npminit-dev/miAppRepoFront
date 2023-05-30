@@ -1,0 +1,32 @@
+#pie_container {
+  position: fixed;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 10% 10% 10% 10%;
+  padding-left: 30%;
+  justify-items: center;
+  height: 25px;
+  background-color: #556B2F;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+#pie_texto {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  user-select: none;
+}
+
+.pie_icono {
+  cursor: pointer;
+  height: 22px;
+  width: 22px;
+}
+
+@media (max-width: 450px) {
+  #pie_container{
+    padding-left: 10%;
+    grid-template-columns: 20% 20% 20% 20%;
+  }
+}

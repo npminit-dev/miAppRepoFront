@@ -11,6 +11,8 @@
   "author": "npminit-dev",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
+    "html-loader": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",

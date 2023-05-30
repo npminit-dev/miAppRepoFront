@@ -1,3 +1,7 @@
+import Home from '../componentes/Home'
+import Tienda from '../componentes/Tienda'
+import Contacto from '../componentes/Contacto'
+
 // producto
 
 export interface Producto {
@@ -53,10 +57,16 @@ export interface GeneralTipo {
   total: number,
   settotal: (total: number) => any,
   seleccion: Seleccion,
-  setseleccion: (seleccion: Seleccion) => any
+  setseleccion: (seleccion: Seleccion) => any,
+  anchopantalla: number,
+  setanchopantalla: (ancho: number | undefined) => any
 }
 
 // navbar
 
-export type Seleccion = 'INICIO' | 'PRODUCTOS' | 'SOBRE NOSOTROS'
+export type Seleccion = 'INICIO' | 'PRODUCTOS' | 'CONTACTO'
 
+// contenido pagina
+
+export type Contenido = typeof Home | typeof Tienda | typeof Contacto
+export type Presentacion = 'PC' | 'MOVIL'

@@ -1,0 +1,31 @@
+#contenido_contenedor{
+  position: absolute;
+  min-height: 100vh;
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid rgba(128, 128, 128, 0.856);
+  top: 75px;
+  z-index: -100;
+}
+
+@media (min-width: 783px) {
+  #contenido_contenedor{
+    width: 100%;
+    margin-top: 6px;
+  }
+}
+
+@media (min-width: 450px) AND (max-width: 782px) {
+  #contenido_contenedor{
+    width: 100%;
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 450px) {
+  #contenido_contenedor{
+    width: 100%;
+    margin-top: 5px;
+    top: 55px;
+  }
+}

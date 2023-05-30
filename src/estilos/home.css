@@ -1,0 +1,37 @@
+#home_contenedor {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+#img_contenedor {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+#presentacion_contenedor {
+
+}
+
+#gif-movil {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+  user-select: none;
+}
+
+#gif-pc {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+  user-select: none;
+}
+
+@media (max-width: 450px) {
+  #gif-movil {
+    object-fit: cover;
+  }
+}
