@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useContext, useState } from 'react';
 import { Seleccion } from '~/interfaces/Interfaces';
 import Perfil_boton from './Perfil_boton';
-import { AiOutlineMenu, AiOutlineHome, AiOutlineShop, AiOutlinePhone } from 'react-icons/ai'
+import { AiOutlineMenu, AiFillHome, AiFillShop, AiFillPhone } from 'react-icons/ai'
 import { General } from '../contextos/General';
 import Logo from './Logo';
 
@@ -51,9 +51,9 @@ export default function Navbar(): JSX.Element {
       </nav>
       { anchopantalla <= 782
        ? <div id='navbar_item_container_movil'>
-           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'INICIO')}><AiOutlineHome style={{marginRight: '10px'}}></AiOutlineHome>INICIO</div>
-           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}><AiOutlineShop style={{marginRight: '10px'}}></AiOutlineShop>PRODUCTOS</div>
-           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'CONTACTO')}><AiOutlinePhone style={{marginRight: '10px'}}></AiOutlinePhone>CONTACTO</div>
+           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'INICIO')}><AiFillHome className='item_logo' style={{marginRight: '10px'}}></AiFillHome>INICIO</div>
+           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}><AiFillShop className='item_logo' style={{marginRight: '10px'}}></AiFillShop>PRODUCTOS</div>
+           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'CONTACTO')}><AiFillPhone className='item_logo' style={{marginRight: '10px'}}></AiFillPhone>CONTACTO</div>
          </div>
         : <></>
       }

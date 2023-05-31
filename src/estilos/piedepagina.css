@@ -1,3 +1,4 @@
+/* contenedor del footer */
 #pie_container {
   position: fixed;
   display: grid;
@@ -12,12 +13,7 @@
   
 }
 
-#pie_texto {
-  font-family: 'Roboto', sans-serif;
-  font-size: 10px;
-  user-select: none;
-}
-
+/* icono del footer */
 .pie_icono {
   cursor: pointer;
   height: 22px;

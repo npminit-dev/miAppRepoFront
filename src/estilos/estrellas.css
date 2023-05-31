@@ -1,15 +1,18 @@
+/* contenedor general (estrellas y puntuacion promedio) */
 #es_contenedor{
   display: grid;
   grid-template-columns: 80% 20%;
   align-items: center;
 }
 
+/* contenedor de estrellas */
 #es_contenedor_es{
   display: grid;
   grid-template-columns: repeat(5, 20%);
   justify-items: center;
 }
 
+/* estrella */
 .estrella{
   display: inline-block;
   color: #FFD700;
@@ -17,6 +20,7 @@
   width: 80%;
 }
 
+/* puntuacion promedio */
 #es_info{
   text-align: center;
 }
