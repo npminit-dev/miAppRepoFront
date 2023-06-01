@@ -1,14 +1,14 @@
 /* contenedor de la seccion home */
 #home_contenedor {
   position: relative;
-  height: 100vh;
   width: 100%;
+  height: 100%;
 }
 
 /* contenedor de las imagenes de presentacion de fondo */
 #img_contenedor {
   position: relative;
-  height: 100vh;
+  min-height: 120vh;
   width: 100%;
 }
 
@@ -30,6 +30,12 @@
 }
 
 @media (max-width: 782px) AND (min-width: 422px){
+  #home_contenedor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
   #presentacion_contenedor {
     margin: 0 25px;
   }
@@ -44,6 +50,12 @@
 }
 
 @media (max-width: 422px){
+  #home_contenedor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
   #presentacion_contenedor {
     margin: 0 10px;
   }

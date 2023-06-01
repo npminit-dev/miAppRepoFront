@@ -1,41 +1,78 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { presentacion_arr } from '../datos/home_texto';
 import '../estilos/textopresentacion.css'
 import { useEffect } from 'react';
 
-async function letra(div: HTMLElement, letra: string): Promise<string>{
-  let retraso = Math.round((Math.random() * 100))
-  return new Promise(async (res, rej) => {
-    let timeout = setTimeout(() => {
-      div.textContent += letra
-      clearTimeout(timeout)
-      if(letra === '.') setTimeout(() => { res('') }, 500)
-      else res('')
-    }, retraso)
-  })
-}
-
-async function escribirFrag(div: HTMLElement, frase: string): Promise<string>{
-  return new Promise(async (res, rej) => {
-    for( let i = 0; i < frase.length; i++ ) await letra(div, frase[i])
-    await new Promise(res => { setTimeout(() => res(''), 3500 ) })
-    res('')
-  })
-}
 
 export default function TextoPresentacion(): JSX.Element {
 
+  const fragRefs = useRef<HTMLDivElement[]>([])
+
+  const [timers, settimers] = useState<NodeJS.Timeout[]>([])
+
   useEffect(() => {
-    async function escribirFrags(){
-      let frags = document.getElementsByClassName('texto_frag') as HTMLCollectionOf<HTMLElement>
-      for(let i = 0; i < frags.length; i++) await escribirFrag(frags[i], presentacion_arr[i])
+
+    async function escribir(){
+      for(let i = 0; i < fragRefs.current.length; i++) {
+        await escribirFrag(fragRefs.current[i], i)
+        await retrasofrags();
+      }
     }
-    escribirFrags()
+
+    escribir()
+
+    return () => {
+      limpiarTimers();
+      fragRefs.current = []
+    }
   }, [])
-  
-  return <div id="texto_contenedor">
+
+  const escribirLetra = async (contenedor: HTMLDivElement, letra: string): Promise<string> => {
+    return new Promise(async (res, rej) => {
+      let delay = retrasoLetra(letra)
+      settimers(timers => [...timers, 
+        setTimeout(() => {
+          contenedor.textContent += letra
+          res('')
+        }, delay)
+      ])
+    })
+  }
+
+  const escribirFrag = async (contenedor: HTMLDivElement, fragindex: number): Promise<string> => {
+    return new Promise(async (res, rej) => {
+      for (let i = 0; i < presentacion_arr[fragindex].length; i++){
+        await escribirLetra(contenedor, presentacion_arr[fragindex][i])
+      }
+      res('')
+    })
+  }
+
+  const retrasoLetra = (letra: string) => letra === '.' ? 1000 : Math.random() * 100
+
+  const retrasofrags = async (): Promise<string> => {
+    return new Promise((res, rej) => {
+      settimers(timers => [...timers, 
+        setTimeout(() => { res('') }, 2000)
+      ])
+    })
+  }
+
+  const limpiarTimers = () => timers.forEach(elem => clearTimeout(elem))
+
+  return (
+    <div id="texto_contenedor">
     { presentacion_arr.map((elem, i) => {
-      return <div className="texto_frag" key={i}></div>
+      return (
+        <div 
+          className="texto_frag" 
+          key={i} 
+          ref={ref => fragRefs.current[i] = ref}>  
+        </div>
+      )
     }) }
   </div>
+  ) 
+  
+
 }

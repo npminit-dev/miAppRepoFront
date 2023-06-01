@@ -70,3 +70,4 @@ export type Seleccion = 'INICIO' | 'PRODUCTOS' | 'CONTACTO'
 
 export type Contenido = typeof Home | typeof Tienda | typeof Contacto
 export type Presentacion = 'PC' | 'MOVIL'
+export type imgarr_tupla = [string, string, string, string, string, string, string, string, string, string]

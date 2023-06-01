@@ -108,6 +108,7 @@
   color: white;
   justify-self: end;
   margin-right: 20px;
+  border-radius: 7%;
 }
 
 
@@ -130,6 +131,7 @@
   justify-content: center;
   background-color: #8B0000;
   cursor: pointer;
+  border-radius: 7%;
 }
 
 #carr_logo{
@@ -140,7 +142,8 @@
 
 #perfil{
   background-color: #8B0000;
-  color: white
+  color: white;
+  border-radius: 7%;
 }
 
 #iniciar_sesion, #perfil{
@@ -164,7 +167,7 @@
 /* efecto de boton de inicio de sesion/perfil/carrito */
 
 #iniciar_sesion:hover, #perfil:hover, #carr_logo_container:hover{
-  box-shadow: 0 0 10px grey;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
   transition-duration: .3s;
 }
 
@@ -235,7 +238,7 @@
   /* navbar */
   #navbar{
     grid-template-columns: 15% 44% 37%;
-    height: 55px;
+    height: 50px;
   }
   /* boton para items del contenedor desplegable */
   #navbar_items_boton{
@@ -258,7 +261,7 @@
     grid-template-rows: repeat(3, 33%);
     box-shadow: 0 2px 5px grey;
     z-index: -10;
-    top: 55px;
+    top: 50px;
   }
   /* items del contenedor desplegable */
   .navbar-item_movil{
@@ -308,7 +311,7 @@
   /* navbar */
   #navbar{
     grid-template-columns: 15% 50% 35%;
-    height: 55px;
+    height: 45px;
   }
   /* boton para items del contenedor desplegable */
   #navbar_items_boton{
@@ -331,7 +334,7 @@
     grid-template-rows: repeat(3, 33%);
     box-shadow: 0 2px 5px grey;
     z-index: -10;
-    top: 55px;
+    top: 45px;
   }
   /* items del contenedor desplegable */
   .navbar-item_movil{
@@ -371,7 +374,7 @@
     width: 60%;
     font-size: 8px;
     justify-self: end;
-    margin-right: 0;
+    margin-right: 10px;
   }
 
   #perfil_container {
@@ -381,7 +384,7 @@
     font-size: 8px;
     gap: 2px;
     justify-self: end;
-    margin-right: 0;
+    margin-right: 10px;
   }
 
   #perfil, #carr_logo_container {
