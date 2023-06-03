@@ -1,0 +1,186 @@
+/* contenedor general de la seccion */
+#contacto_container {
+  position: absolute;
+  height: calc(100vh + 5px);
+  width: 100vw;
+  font-family: 'Roboto', sans-serif;
+  color: #333333;
+}
+
+/* fondo de la seccion contactos */
+#fondo {
+  position: absolute;
+  height: calc(100vh + 20px);
+  width: 100vw;
+  object-fit: fill;
+}
+
+/* contenedor de la info de contacto */
+#info_container {
+  padding-left: 20px;
+  padding-top: 20px;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 10% 20% 10% 30%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.404);
+  justify-content: start;
+  align-items: center;
+  line-height: 130%;
+}
+
+/* etiqueta de la info */
+.etiqueta {
+  font-family: 'Bitter', serif;
+  text-decoration: underline double;
+  line-height: 150%;
+}
+
+/* datos de la info */
+.datos {
+  margin-left: 10px;
+  user-select: text;
+  line-height: 150%;
+}
+
+/* contenedor de los logos de asociaciones civiles de la carne */
+#logos_container {
+  width: 35%;
+  height: 150px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  top: 75%;
+  align-items: center;
+  justify-items: center;
+  margin-left: 20px;
+  background-color: white;
+  opacity: .5;
+  overflow: hidden;
+}
+
+/* logo de la sociedad rural */
+#sra_logo {
+  height: 100px;
+  width: 100px;
+  color: black;
+  z-index: 100;
+}
+
+/* logo de la ipcva */
+#ipcva_logo {
+  width: 220px;
+  height: 100px;
+  z-index: -100;
+}
+
+
+@media (max-width: 782px) AND (min-width: 488px){
+
+  #info_container {
+    padding-left: 15px;
+  }
+
+  #fondo {
+    object-fit: cover;
+  }
+  
+  .etiqueta {
+    font-family: 'Bitter', serif;
+    text-decoration: underline double;
+    font-size: 14px;
+  }
+  
+  .datos {
+    margin-left: 7px;
+    font-size: 14px;
+  }
+
+  #logos_container {
+    width: 60%;
+    top: 76%;
+  }
+  
+}
+
+@media (min-width: 288px) AND (max-width: 488px) {
+
+  #info_container {
+    padding-left: 10px;
+  }
+
+  #fondo {
+    object-fit: cover;
+  }
+
+  .etiqueta {
+    font-family: 'Bitter', serif;
+    text-decoration: underline double;
+    font-size: 12px;
+  }
+  
+  .datos {
+    margin-left: 5px;
+    font-size: 12px;
+  }
+
+  #logos_container {
+    height: 125px;
+    width: 80%;
+    top: 78%;
+  }
+}
+
+@media (max-width: 288px) {
+  #info_container {
+    padding-left: 6px;
+  }
+
+  #fondo {
+    object-fit: cover;
+  }
+
+  .etiqueta {
+    font-family: 'Bitter', serif;
+    text-decoration: underline double;
+    font-size: 10px;
+  }
+  
+  .datos {
+    margin-left: 3px;
+    font-size: 10px;
+    line-height: 150%;
+  }
+
+  #logos_container {
+    height: 90px;
+    width: 90%;
+    margin-left: 5px;
+    top: 84%;
+  }
+
+  #sra_logo {
+    width: 65px;
+    height: 65px;
+  }
+
+  #ipcva_logo {
+    height: 75px;
+    width: 200px;
+  }
+}
+
+
+
+/*
+font-family: 'Bitter', serif;
+font-family: 'Cormorant Garamond', serif;
+font-family: 'Cormorant Upright', serif;
+font-family: 'Gentium Plus', serif;
+font-family: 'Lobster Two', cursive;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Playfair', serif;
+font-family: 'Roboto', sans-serif;
+*/

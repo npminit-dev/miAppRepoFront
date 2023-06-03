@@ -33,6 +33,11 @@ export interface DatosUsuario {
   Contraseña: string
 }
 
+export interface LogUsuarioForm {
+  AliasUsuario: string,
+  Contraseña: string
+}
+
 
 // carrito
 
@@ -48,6 +53,8 @@ export interface Carrito_Prod {
 export interface GeneralTipo {
   jwt: string,
   setjwt: (jwt: string) => any,
+  cookiesenabled: boolean,
+  setcookiesenabled: (set: boolean) => any,
   datosusuario: DatosUsuario
   setdatosusuario: (datos: DatosUsuario) => any
   productos: Producto[],
@@ -59,7 +66,11 @@ export interface GeneralTipo {
   seleccion: Seleccion,
   setseleccion: (seleccion: Seleccion) => any,
   anchopantalla: number,
-  setanchopantalla: (ancho: number | undefined) => any
+  setanchopantalla: (ancho: number | undefined) => any,
+  loginformvisible: boolean,
+  setloginformvisible: (visible: boolean) => any,
+  registroformvisible: boolean,
+  setregistroformvisible: (visible: boolean) => any
 }
 
 // navbar
@@ -71,3 +82,10 @@ export type Seleccion = 'INICIO' | 'PRODUCTOS' | 'CONTACTO'
 export type Contenido = typeof Home | typeof Tienda | typeof Contacto
 export type Presentacion = 'PC' | 'MOVIL'
 export type imgarr_tupla = [string, string, string, string, string, string, string, string, string, string]
+
+export default interface contacto{
+  direccion: string,
+  departamentos: string[],
+  horarioatencion: string,
+  contacto: string[]
+}

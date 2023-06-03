@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { presentacion_arr } from '../datos/home_texto';
+import { presentacion_arr } from '../datos/texto';
 import '../estilos/textopresentacion.css'
 import { useEffect } from 'react';
 

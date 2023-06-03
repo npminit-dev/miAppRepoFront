@@ -1,0 +1,178 @@
+/* contenedor del modal */
+#modal_container {
+  position: fixed;
+  bottom: 35px;
+  width: 100vw;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* modal */
+#modal {
+  display: grid;
+  padding: 5px;
+  padding-bottom: 0;
+  grid-template-rows: 10% repeat(3, 20%) 25%;
+  width: calc(100vw - 50px);
+  max-width: 700px;
+  height: 200px;
+  align-items: center;
+  background-color: #cccccc;
+  font-family: 'Roboto', sans-serif;
+  color: #333333;
+  border-radius: 10px;
+}
+
+/*
+font-family: 'Bitter', serif;
+font-family: 'Cormorant Garamond', serif;
+font-family: 'Cormorant Upright', serif;
+font-family: 'Gentium Plus', serif;
+font-family: 'Lobster Two', cursive;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Playfair', serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+/* titulo del modal */
+#titulo {
+  font-size: 20px;
+  text-align: center;
+}
+
+/* parrafos de informacion */
+.parrafo {
+  font-size: 12px;
+  line-height: 90%;
+}
+
+/* contenedor de los botones del modal */
+#contenedor_botones {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 0px 10%;
+}
+
+/* boton aceptar */
+#aceptar {
+  border-radius: 2px;
+  padding: 2px;
+  cursor: pointer
+}
+
+/* boton rechazar */
+#rechazar {
+  border-radius: 2px;
+  padding: 2px;
+  cursor: pointer
+}
+
+@media (max-width: 782px) AND (min-width: 422px) {
+  #modal_container {
+    position: fixed;
+    bottom: 35px;
+    width: 100vw;
+  }
+
+  #modal {
+    width: 100vw;
+  }
+
+  #titulo {
+    font-size: 17px;
+  }
+
+  .parrafo {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 422px) AND (min-width: 350px) {
+
+  #modal_container {
+    position: fixed;
+    bottom: 35px;
+    width: 100vw;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #modal {
+    grid-template-rows: 10% repeat(3, 25%) 15%; 
+    width: 100vw;
+  }
+
+  #titulo {
+    font-size: 12px;
+  }
+
+  .parrafo {
+    font-size: 10px;
+    line-height: 80%;
+  }
+
+  #aceptar {
+    padding: 1px;
+    font-size: 10px;
+  }
+
+  #rechazar {
+    padding: 1px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 250px) AND (max-width: 350px) {
+  #modal_container {
+    height: 250px;
+    width: 100vw;
+  }
+
+  #modal {
+    width: 100vw;
+    grid-template-rows: 5% repeat(3, 27%) 10%; 
+    height: 225px;
+  }
+
+  #titulo {
+    font-size: 10px;
+  }
+
+  .parrafo {
+    font-size: 10px;
+  }
+
+  #aceptar, #rechazar {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 250px) {
+  #modal_container {
+    height: 300px;
+    width: 100vw;
+  }
+
+  #modal {
+    width: 100vw;
+    grid-template-rows: 5% repeat(3, 27%) 10%; 
+    height: 275px;
+  }
+
+  #titulo {
+    font-size: 10px;
+  }
+
+  .parrafo {
+    font-size: 8px;
+  }
+
+  #aceptar, #rechazar {
+    font-size: 8px;
+  }
+}
+

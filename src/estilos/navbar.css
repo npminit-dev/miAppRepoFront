@@ -13,10 +13,12 @@
   height: 75px;
   width: 100%;
   overflow: hidden;
-  background-color:  #94C46B;
+  background: linear-gradient(#3E8928, #93C651);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.767);
+  color: #333333;
 }
 
-
+/* #94C46B */
 /* boton desplegable */
 
 #navbar_items_boton{
@@ -108,7 +110,7 @@
   color: white;
   justify-self: end;
   margin-right: 20px;
-  border-radius: 7%;
+  border-radius: 5px;
 }
 
 
@@ -131,7 +133,7 @@
   justify-content: center;
   background-color: #8B0000;
   cursor: pointer;
-  border-radius: 7%;
+  border-radius: 5px;
 }
 
 #carr_logo{
@@ -143,7 +145,7 @@
 #perfil{
   background-color: #8B0000;
   color: white;
-  border-radius: 7%;
+  border-radius: 5px;
 }
 
 #iniciar_sesion, #perfil{
@@ -178,6 +180,7 @@
 
   #navbar_item_container_movil{
     display: none;
+    color: #333333;
   }
 
   #navbar{
@@ -198,6 +201,7 @@
   #navbar{
     grid-template-columns: 13% 53% 33%;
     height: 65px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.767);
   }
   /* contenedor de items del navbar */
   #navbar_item_container{
@@ -215,6 +219,7 @@
     grid-template-rows: repeat(3, 33%);
     z-index: -10;
     top: 65px;
+    color: #333333;
   }
   /* items del contenedor desplegable */
   .navbar-item_movil {
@@ -262,6 +267,7 @@
     box-shadow: 0 2px 5px grey;
     z-index: -10;
     top: 50px;
+    color: #333333;
   }
   /* items del contenedor desplegable */
   .navbar-item_movil{
@@ -312,6 +318,7 @@
   #navbar{
     grid-template-columns: 15% 50% 35%;
     height: 45px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.767);
   }
   /* boton para items del contenedor desplegable */
   #navbar_items_boton{

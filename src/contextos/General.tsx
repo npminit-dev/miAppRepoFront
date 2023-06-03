@@ -3,7 +3,9 @@ import { Carrito_Prod, Producto, GeneralTipo, DatosUsuario, Seleccion } from "~/
 
 const defValues: GeneralTipo = {
   jwt: '',
-  setjwt: (): null => null ,
+  setjwt: (): null => null,
+  cookiesenabled: false,
+  setcookiesenabled: (): null => null,
   datosusuario: undefined,
   setdatosusuario: (): null => null,
   productos: [] as Producto[],
@@ -15,7 +17,11 @@ const defValues: GeneralTipo = {
   seleccion: 'INICIO',
   setseleccion: (): null => null,
   anchopantalla: window.innerWidth,
-  setanchopantalla: (): null => null
+  setanchopantalla: (): null => null,
+  loginformvisible: false,
+  setloginformvisible: (): null => null,
+  registroformvisible: false,
+  setregistroformvisible: (): null => null
 }
 
 export const General = createContext<GeneralTipo>(defValues);
@@ -23,21 +29,20 @@ export const General = createContext<GeneralTipo>(defValues);
 export default function GeneralProvider({children}: any): JSX.Element{
 
   useEffect(() => {
-    async function getProds(){
-      let prods: Producto[] | Response = await fetch('http://localhost:3002/prods/categoria/desc')
-      prods = await prods.json();
-      setproductos(prods as Producto[])
-    }
-    getProds();
+    if(!localStorage.getItem('cookiesenabled')) setcookiesenabled(false)
+    else setcookiesenabled(true)
   }, [])
 
   const [jwt, setjwt] = useState('');
+  const [cookiesenabled, setcookiesenabled] = useState(false)
   const [datosusuario, setdatosusuario] = useState({} as DatosUsuario)
   const [productos, setproductos] = useState([] as Producto[])
   const [carrito, setcarrito] = useState([] as Carrito_Prod[])
   const [total, settotal] = useState(0)
   const [seleccion, setseleccion] = useState('INICIO' as Seleccion)
   const [anchopantalla, setanchopantalla] = useState(window.innerWidth)
+  const [loginformvisible, setloginformvisible] = useState(false)
+  const [registroformvisible, setregistroformvisible] = useState(false)
 
   window.addEventListener('resize', () => {
     setanchopantalla(window.innerWidth)
@@ -45,7 +50,26 @@ export default function GeneralProvider({children}: any): JSX.Element{
 
   return (
     <General.Provider value={{
-      jwt, setjwt, datosusuario, setdatosusuario, productos, setproductos, carrito, setcarrito, total, settotal, seleccion, setseleccion, anchopantalla, setanchopantalla
+      jwt, 
+      setjwt, 
+      cookiesenabled,
+      setcookiesenabled,
+      datosusuario, 
+      setdatosusuario, 
+      productos, 
+      setproductos, 
+      carrito, 
+      setcarrito, 
+      total, 
+      settotal, 
+      seleccion, 
+      setseleccion, 
+      anchopantalla, 
+      setanchopantalla, 
+      loginformvisible, 
+      setloginformvisible, 
+      registroformvisible, 
+      setregistroformvisible
     }}>
       {children}
     </General.Provider>

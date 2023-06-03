@@ -1,0 +1,76 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+#logform_fondo {
+  position: fixed;
+  display: flex;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.685);
+}
+
+
+#logform_contenedor {
+  display: grid;
+  grid-template-rows: 5% 95%;
+  background-color: white;
+  padding: 10px;
+  height: 400px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+#logform_cerrar {
+  top: 50px;
+  height: 30px;
+  width: 30px;
+  justify-self: end;
+  margin-right: -20px;
+  margin-top: -20px;
+  background-color: white;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+#logform {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 30% 30% 20% 20%;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_contenedor {
+  display: grid;
+  grid-template-rows: 40% 40% 20%;
+  height: 100px;
+  width: 200px;
+}
+
+.input_etiqueta {
+  align-self: self-end;
+}
+
+.input {
+
+}
+
+#submit {
+  height: 40px;
+}
+
+.err_msg {
+  color: #FF0000;
+  font-size: 12px;
+  font-style: italic;
+}
+
+#boton_registro {
+  height: 30px;
+  text-align: center;
+}

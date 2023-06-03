@@ -44,7 +44,7 @@ export default function Navbar(): JSX.Element {
         <Logo></Logo>
         <div id='navbar_item_container'>
           <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'INICIO')}>INICIO</div>
-          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}>PRODUCTOS</div>
+          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}>TIENDA</div>
           <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'CONTACTO')}>CONTACTO</div>
         </div>
         <Perfil_boton></Perfil_boton>
@@ -52,7 +52,7 @@ export default function Navbar(): JSX.Element {
       { anchopantalla <= 782
        ? <div id='navbar_item_container_movil'>
            <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'INICIO')}><AiFillHome className='item_logo' style={{marginRight: '10px'}}></AiFillHome>INICIO</div>
-           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}><AiFillShop className='item_logo' style={{marginRight: '10px'}}></AiFillShop>PRODUCTOS</div>
+           <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}><AiFillShop className='item_logo' style={{marginRight: '10px'}}></AiFillShop>TIENDA</div>
            <div className='navbar-item_movil' onClick={(e) => manejarSeleccion(e, 'CONTACTO')}><AiFillPhone className='item_logo' style={{marginRight: '10px'}}></AiFillPhone>CONTACTO</div>
          </div>
         : <></>

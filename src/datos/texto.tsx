@@ -1,3 +1,4 @@
+import contacto from "~/interfaces/Interfaces";
 
 export const presentacion_arr: string[] = [
   '¡Bienvenido a Carnes Pampeanas!',
@@ -9,22 +10,20 @@ export const presentacion_arr: string[] = [
   'En Carnes Pampeanas, nos comprometemos a brindarte una experiencia excepcional en cada bocado. Únete a nosotros en este viaje de sabores, tradición y calidad. ¡Disfruta de la esencia de la carne argentina con Carnes Pampeanas!'
 ];
 
-export const contacto: string[] = [
-  'Calle Principal, 123',
-  'Ciudad Carnes Pampeanas',
-  'Provincia de La Pampa',
-  'Argentina',
-  'Teléfono de contacto (fijo): +54 123 456789',
-  'Teléfono de contacto (móvil): +54 987 654321',
-  'Email para clientes: info@carnespampeanas.com',
-  'Email para empresas: ventas@carnespampeanas.com'
-]
-
-export const info: string[] = [
-  'Horario de atención: Lunes a viernes de 9:00 a 17:00',
-  'Departamento de atención al cliente: 0800-1234-CARN (0800-1234-2276)',
-  'Departamento de ventas al por mayor: extensión 2',
-  'Departamento de ventas al por menor: extensión 3',
-  'Departamento de logística: extensión 4',
-  'Servicio de atención al cliente en redes sociales: @CarnesPampeanasSupport'
-]
+export const contacto: contacto = {
+  direccion: 'Calle Principal, 123, Ciudad Carnes Pampeanas, Provincia de La Pampa, Argentina',
+  departamentos: [
+    'Departamento de ventas al por mayor: extensión 2',
+    'Departamento de ventas al por menor: extensión 3',
+    'Departamento de logística: extensión 4',
+  ],
+  horarioatencion: 'Lunes a viernes de 9:00 a 17:00',
+  contacto: [
+    'Teléfono de contacto (fijo): +54 123 456789',
+    'Teléfono de contacto (móvil): +54 987 654321',
+    'Email para clientes: info@carnespampeanas.com',
+    'Email para empresas: ventas@carnespampeanas.com',
+    'Departamento de atención al cliente: 0800-1234-CARN (0800-1234-2276)',
+    'Servicio de atención al cliente en redes sociales: @CarnesPampeanasSupport'
+  ]
+}
