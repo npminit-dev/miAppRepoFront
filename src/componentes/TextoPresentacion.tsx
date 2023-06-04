@@ -48,12 +48,12 @@ export default function TextoPresentacion(): JSX.Element {
     })
   }
 
-  const retrasoLetra = (letra: string) => letra === '.' ? 1000 : Math.random() * 100
+  const retrasoLetra = (letra: string) => letra === '.' ? 200 : Math.random() * 60
 
   const retrasofrags = async (): Promise<string> => {
     return new Promise((res, rej) => {
       settimers(timers => [...timers, 
-        setTimeout(() => { res('') }, 2000)
+        setTimeout(() => { res('') }, 1200)
       ])
     })
   }

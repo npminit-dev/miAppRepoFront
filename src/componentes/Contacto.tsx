@@ -4,10 +4,31 @@ import { img_contacto, img_contacto_logos } from '../datos/img_contacto_links'
 import { General } from "../contextos/General";
 import { contacto } from '../datos/texto'
 
+const retraso = async() => {
+  return new Promise((res, rej) => {
+    setTimeout(() => res(''), 100)
+  })
+}
+
+const keyframes: Keyframe[] = [{ transform: 'translateX(-100px)', opacity: 0 },{ transform: 'translateX(0)', opacity: 1 }]
+const anim_opciones: KeyframeAnimationOptions = { duration: 350, fill: 'forwards', easing: 'ease-out' }
+
 export default function Contacto(): JSX.Element {
 
   const { anchopantalla } = useContext(General)
+  const secciones = useRef<HTMLDivElement[]>([])
 
+  useEffect(() => {
+    async function animar(){
+      for(const seccion of secciones.current) {
+        await retraso();
+        seccion.animate(keyframes, anim_opciones)
+      }
+    }
+
+    animar()
+
+  }, [])
 
   return (
     <div id="contacto_container">
@@ -17,25 +38,25 @@ export default function Contacto(): JSX.Element {
         title="fondo de la seccion contacto"
       ></img>
       <div id="info_container">
-        <div className="info">
-          <label className="etiqueta">Encuentranos en: </label>
+        <div className="info_seccion" ref={ref => secciones.current.push(ref)}>
+          <div className="etiqueta">Direccion de nuestra planta:</div>
           <div className="datos">{contacto.direccion}</div>
         </div>
-        <div className="info">
-          <label className="etiqueta">Departamentos: </label>
-          {contacto.departamentos.map((elem, i) => (
-            <div className="datos" key={i}>{elem}</div>
-          ))}
+        <div className="info_seccion" ref={ref => secciones.current.push(ref)}>
+          <div className="etiqueta">Departamentos:</div>
+          <div className="datos">
+            { contacto.departamentos.map((elem, i) => <div key={i}>{elem}</div>) }
+          </div>
         </div>
-        <div className="info">
-          <label className="etiqueta">Horarios de atencion: </label>
+        <div className="info_seccion" ref={ref => secciones.current.push(ref)}>
+          <div className="etiqueta">Horarios de atencion:</div>
           <div className="datos">{contacto.horarioatencion}</div>
         </div>
-        <div className="info">
-          <label className="etiqueta">Contacto: </label>
-          {contacto.contacto.map((elem, i) => (
-            <div className="datos" key={i}>{elem}</div>
-          ))}
+        <div className="info_seccion" ref={ref => secciones.current.push(ref)}>
+          <div className="etiqueta">Contacto:</div>
+          <div className="datos">
+            {contacto.contacto.map((elem, i) => <div key={i}>{elem}</div>) }
+          </div>
         </div>
       </div>
       <div id="logos_container">

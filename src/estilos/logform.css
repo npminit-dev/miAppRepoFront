@@ -70,6 +70,12 @@
   font-style: italic;
 }
 
+#iniciarsesion_contenedor {
+  display: grid;
+  grid-template-rows: 80% 20%;
+  width: 100%;
+}
+
 #boton_registro {
   height: 30px;
   text-align: center;

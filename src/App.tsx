@@ -10,14 +10,22 @@ import PieDePagina from "./componentes/PieDePagina";
 import LogForm from './componentes/LogForm';
 import CookiesModal from "./componentes/CookiesModal";
 
+function cargarCookie() {
+
+}
+
+function crearCookie() {
+
+}
 
 export default function App() { 
 
-  const { productos, setproductos, carrito, jwt, total, datosusuario } = useContext(General)
+  window.addEventListener('load', () => {
 
-  function handleClick(){
-    console.log('holaaaaa')
-  }
+  })
+
+  const { carrito, jwt, total, datosusuario } = useContext(General)
+
 
   return (
     <div id="app">

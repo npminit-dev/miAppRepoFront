@@ -1,39 +1,39 @@
 /* contenedor general del contenido de la pagina (dependiendo de la seccion elegida) */
 #contenido_contenedor{
-  position: relative;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
   top: 75px;
   z-index: -100;
 }
 
 @media (min-width: 783px) {
   #contenido_contenedor{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
   }
 }
 
 @media (min-width: 450px) AND (max-width: 782px) {
   #contenido_contenedor{
     top: 65px;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
   }
 }
 
 @media (min-width: 255px) AND (max-width: 450px) {
   #contenido_contenedor{
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     top: 50px;
   }
 }
 
 @media (max-width: 255px) {
   #contenido_contenedor{
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     top: 45px;
   }
 }

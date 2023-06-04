@@ -24,7 +24,7 @@
 #presentacion_contenedor {
   position: absolute;
   letter-spacing: 1px;
-  margin: 0 50px;
+  margin: 10px 30px;
   top: 0px;
   z-index: 1000;
 }

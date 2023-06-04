@@ -57,8 +57,6 @@ export interface GeneralTipo {
   setcookiesenabled: (set: boolean) => any,
   datosusuario: DatosUsuario
   setdatosusuario: (datos: DatosUsuario) => any
-  productos: Producto[],
-  setproductos: (productos: Producto[]) => any,
   carrito: Carrito_Prod[],
   setcarrito: (carritos: Carrito_Prod[]) => any,
   total: number,

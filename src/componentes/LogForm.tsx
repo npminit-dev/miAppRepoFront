@@ -4,17 +4,30 @@ import { LogUsuarioForm } from "~/interfaces/Interfaces";
 import '../estilos/logform.css'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { General } from "../contextos/General";
+import { crearGalleta, fetchData } from "../utilidades/funciones";
+import { useRef } from 'react';
 
 export default function LogForm(): JSX.Element {
 
+  const { loginformvisible, setloginformvisible, jwt, setjwt, cookiesenabled } = useContext(General)
   const { register, formState: {errors} , handleSubmit } = useForm({})
-
-  const { loginformvisible, setloginformvisible } = useContext(General)
+  const sesionerrs = useRef<HTMLSpanElement>()
 
   const cerrarModal = () => loginformvisible ? setloginformvisible(false) : setloginformvisible(true)
 
+  const cargarDatosUsuario = async (datos: LogUsuarioForm) => {
+    try {
+      let result = await fetchData('http://localhost:3002/usuarios/iniciarsesion', JSON.stringify(datos), 'post')
+      if(result.includes('Error')) sesionerrs.current.textContent = 'Credenciales Incorrectas'
+      else if(cookiesenabled) crearGalleta(result, 15)
+      setjwt(result)
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
   function datosForm(datos: LogUsuarioForm){
-    console.log(datos)
+    cargarDatosUsuario(datos)
   }
 
   return (
@@ -33,12 +46,15 @@ export default function LogForm(): JSX.Element {
           </div>
           <div className="input_contenedor">
             <label className="input_etiqueta">Contraseña</label>
-            <input className="input" type="text" {...register('Contraseña',{
+            <input className="input" type="password" {...register('Contraseña',{
               required: true
             })}/>
             { errors.Contraseña?.type === 'required' && <p className="err_msg">el campo 'Contraseña' es obligatorio</p> }
           </div>
-          <input id="submit" type="submit" value="INICIAR SESION"/>
+          <div id="iniciarsesion_contenedor">
+            <input id="submit" type="submit" value="INICIAR SESION" />
+            <span className="err_msg" ref={sesionerrs}></span>
+          </div>
           <a href="#" id="boton_registro">Quiero registrarme</a>
         </form>
       </div>  
