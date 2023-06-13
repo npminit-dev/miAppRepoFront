@@ -38,7 +38,6 @@ export default function Imgs_Home({imgarr}: {imgarr: imgarr_tupla}): JSX.Element
     return () => {
       limpiarTimersYAnimaciones()
       imgRefs.current = []
-      console.log('desmontado')
     }
   }, [])
 

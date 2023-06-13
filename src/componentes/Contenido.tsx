@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import { Seleccion } from '../interfaces/Interfaces';
 import Tienda from "./Tienda";
 import Contacto from "./Contacto";
+import RegistroForm from "./RegistroForm";
 
 export default function Contenido(): JSX.Element{
 

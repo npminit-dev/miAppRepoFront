@@ -22,6 +22,7 @@
   height: 400px;
   width: 200px;
   border-radius: 5px;
+  transition-duration: .3s;
 }
 
 #logform_cerrar {
@@ -68,6 +69,7 @@
   color: #FF0000;
   font-size: 12px;
   font-style: italic;
+  height: 12px;
 }
 
 #iniciarsesion_contenedor {

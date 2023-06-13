@@ -5,9 +5,11 @@ export const cookiename = '1AcFGGG.aas__243#$5'
 export function fetchData(dir: string, body: string, method: string): Promise<any> {
   return new Promise((res, rej) => {
     fetch(dir, { body: body, method: method, headers: { 'Content-Type': 'application/json' }} as RequestInit)
-      .then(response => response.text() || response.json())
-      .then(response => res(response)) 
-      .catch(err => rej(err))
+      .then(response => {
+        if(response.ok) (response.text() || response.json()).then(jwt => res(jwt))
+        else if(response.status == 404) rej('Usuario no encontrado')
+        else rej(response.status)
+      })
   })
 }
 

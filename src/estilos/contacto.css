@@ -17,10 +17,10 @@
 #info_container {
   position: absolute;
   display: grid;
-  grid-template-rows: 14% 30% 14% 30%;
+  grid-template-rows: 14% 28% 14% 32%;
   gap: 10px;
   width: calc(100vw - 20px);
-  height: 70vh;
+  height: 72vh;
   padding: 10px;
   padding-right: 0;
   margin-top: 10px;
@@ -108,7 +108,7 @@
   }
 
   .etiqueta, .datos, .datos div{
-    font-size: 15px;
+    font-size: 13px;
   }
 
   #logos_container {
@@ -133,6 +133,7 @@
     grid-template-rows: 14% 30% 14% 50%;
     padding-left: 0;
     padding-right: 0;
+    width: 100vw;
   }
 
   .info_seccion {

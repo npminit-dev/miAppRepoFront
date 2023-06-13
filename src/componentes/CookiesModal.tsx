@@ -14,11 +14,14 @@ export default function CookiesModal(): JSX.Element {
     modal.current.style.display = 'none';
   }
 
-  const manejarRechazadas = () => modal.current.style.display = 'none'
+  const manejarRechazadas = () => {
+    localStorage.setItem('cookiesenabled', 'false')
+    modal.current.style.display = 'none'
+  }
   
   return (
     <>
-    { cookiesenabled === false
+    { cookiesenabled == undefined
     ? <div id='modal_container'>
       <div id="modal" ref={modal}>
         <h2 id="titulo">¡Importante! Uso de cookies en nuestro sitio</h2>

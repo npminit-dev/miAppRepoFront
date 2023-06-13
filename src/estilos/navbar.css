@@ -93,11 +93,11 @@
 
 .navbar_item:hover{
   transition-duration: .3s;
-  border-bottom: 1px solid grey;
-  border-right: 1px solid grey;
   border-radius: 5%;
   box-sizing: border-box;
   font-weight: bold;
+  background-color: #006400;
+  color: white;
 }
 
 /* boton de inicio de sesion*/
@@ -234,7 +234,8 @@
   }
 
   .navbar-item_movil:hover{
-    border-bottom: 1px solid grey;
+    background-color: #006400;
+    color: white;
   }
 
 }
@@ -284,8 +285,10 @@
   }
 
   .navbar-item_movil:hover{
-    border-bottom: 1px solid grey;
+    background-color: #006400;
+    color: white;
   }
+
   /* logo */
   #logo_container{
     width: 90px;
@@ -358,8 +361,10 @@
   }
 
   .navbar-item_movil:hover{
-    border-bottom: 1px solid grey;
+    background-color: #006400;
+    color: white;
   }
+
   /* logo */
   #logo_container{
     width: 60px;

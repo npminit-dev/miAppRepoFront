@@ -53,7 +53,7 @@ export interface Carrito_Prod {
 export interface GeneralTipo {
   jwt: string,
   setjwt: (jwt: string) => any,
-  cookiesenabled: boolean,
+  cookiesenabled: boolean | undefined,
   setcookiesenabled: (set: boolean) => any,
   datosusuario: DatosUsuario
   setdatosusuario: (datos: DatosUsuario) => any
@@ -87,3 +87,7 @@ export default interface contacto{
   horarioatencion: string,
   contacto: string[]
 }
+
+// registro
+
+export type Meses = 'ENERO' | 'FEBRERO' | 'MARZO' | 'ABRIL' | 'MAYO' | 'JUNIO' | 'JULIO' | 'AGOSTO' | 'SEPTIEMBRE' | 'OCTUBRE' | 'NOVIEMBRE' | 'DICIEMBRE'

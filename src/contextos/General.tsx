@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 const defValues: GeneralTipo = {
   jwt: '',
   setjwt: (): null => null,
-  cookiesenabled: false,
+  cookiesenabled: undefined,
   setcookiesenabled: (): null => null,
   datosusuario: undefined,
   setdatosusuario: (): null => null,
@@ -29,15 +29,16 @@ export const General = createContext<GeneralTipo>(defValues);
 export default function GeneralProvider({children}: any): JSX.Element{
 
   useEffect(() => {
-    if(!localStorage.getItem('cookiesenabled')) setcookiesenabled(false)
-    else setcookiesenabled(true)
+    if(localStorage.getItem('cookiesenabled') == 'true') setcookiesenabled(true)
+    else if(localStorage.getItem('cookiesenabled') == 'false') setcookiesenabled(false)
+    else Cookies.remove(cookiename)
     if(Cookies.get(cookiename)) {
       setjwt(Cookies.get(cookiename))
     }
   }, [])
 
   const [jwt, setjwt] = useState('');
-  const [cookiesenabled, setcookiesenabled] = useState(false)
+  const [cookiesenabled, setcookiesenabled] = useState(undefined)
   const [datosusuario, setdatosusuario] = useState({} as DatosUsuario)
   const [carrito, setcarrito] = useState([] as Carrito_Prod[])
   const [total, settotal] = useState(0)

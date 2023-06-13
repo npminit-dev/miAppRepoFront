@@ -9,6 +9,7 @@ import './estilos/app.css'
 import PieDePagina from "./componentes/PieDePagina";
 import LogForm from './componentes/LogForm';
 import CookiesModal from "./componentes/CookiesModal";
+import RegistroForm from "./componentes/RegistroForm";
 
 function cargarCookie() {
 
@@ -29,11 +30,12 @@ export default function App() {
 
   return (
     <div id="app">
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar>
       <Contenido></Contenido>
       <PieDePagina></PieDePagina>
       <LogForm></LogForm>
-      <CookiesModal></CookiesModal>
+      <CookiesModal></CookiesModal> */}
+      <RegistroForm></RegistroForm>
     </div>
   )
 }
