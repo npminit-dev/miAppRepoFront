@@ -15,9 +15,8 @@
 
 
 #logform_contenedor {
-  display: grid;
-  grid-template-rows: 5% 95%;
-  background-color: white;
+  position: relative;
+  background-color: #efefef;
   padding: 10px;
   height: 400px;
   width: 200px;
@@ -26,15 +25,22 @@
 }
 
 #logform_cerrar {
-  top: 50px;
+  position: absolute;
+  top: -15px;
+  right: -15px;
   height: 30px;
   width: 30px;
-  justify-self: end;
-  margin-right: -20px;
-  margin-top: -20px;
-  background-color: white;
+  background-color: #333333;
+  color: #f5f5f5;
+  transition: .2s;
+  transition-timing-function: ease-out;
   border-radius: 100%;
   cursor: pointer;
+}
+
+#logform_cerrar:hover {
+  background-color: #f5f5f5;
+  color: #333333;
 }
 
 #logform {
@@ -57,12 +63,17 @@
   align-self: self-end;
 }
 
-.input {
-
-}
-
 #submit {
   height: 40px;
+  color: #333333;
+  background-color: #f5f5f5;
+  transition: .2s;
+  transition-timing-function: ease-out;
+}
+
+#submit:hover {
+  color: #f5f5f5;
+  background-color: #333333;
 }
 
 .err_msg {
@@ -81,4 +92,11 @@
 #boton_registro {
   height: 30px;
   text-align: center;
+}
+
+@media (max-width: 280px) {
+  #logform_cerrar {
+    top: -15px;
+    left: calc(50% - 15px);
+  }
 }

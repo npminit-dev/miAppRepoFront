@@ -1,55 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, useRef, useState, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
-import { Meses } from "~/interfaces/Interfaces";
+import { Meses } from "../interfaces/Interfaces";
+import { añobase, es30Dias, es31Dias, esBisiesto, fetchData, validarContraseña } from "../utilidades/funciones";
+import '../estilos/registroform.css'
+import { AiFillCloseCircle } from 'react-icons/ai'
 
-export default function RegistroForm(): JSX.Element {
+type myprops = { setModalRegistro: Dispatch<SetStateAction<boolean>> } 
 
-  const { register, handleSubmit } = useForm()
+export default function RegistroForm({ setModalRegistro }: myprops ): JSX.Element {
 
-  function mostrar(datos: FormData) {
-    console.log(datos)
-  }
+  const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm()
 
-  const añobase = (): number => new Date(Date.now()).getFullYear() - 18
+  const contenedor = useRef<HTMLDivElement>();
+  const err_caja = useRef<HTMLDivElement>();
 
+  const [msjexito, setmsjexito] = useState<boolean>(false)
   const [mes, setmes] = useState<Meses>()
   const [año, setaño] = useState<number>();
 
-  const es30Dias = (mes: Meses): boolean => mes === 'ABRIL' || mes === 'JUNIO' || mes ==='SEPTIEMBRE' || mes === 'NOVIEMBRE'
-  const es31Dias = (mes: Meses): boolean => mes === 'ENERO' || mes === 'MARZO' || mes === 'MAYO' || mes === 'JULIO' || mes === 'AGOSTO' || mes === 'OCTUBRE' || mes === 'DICIEMBRE'
-  const esBisiesto = (año: number) => año % 4 === 0 && !(año % 100 === 0 && año % 400 !== 0)
-
-  useEffect(() => {
-
-  }, [])
+  const animarCierreModal = () => contenedor.current.animate([{ opacity: 0, display: 'none' }], { duration: 150, fill: 'forwards' })
+  
+  const registrar = async(datos: any) => {
+    let datosFinales = { Alias: datos.Alias, Nombres: datos.Nombres, Apellido: datos.Apellido,
+      FechaNac: `${datos.DiaNac}-${datos.MesNac}-${datos.AñoNac}`,
+      Edad: datos.Edad, Email: datos.Email, Telefono: datos.Telefono, Contraseña: datos.Contraseña }
+    try{      
+      await fetchData('http://localhost:3002/usuarios/registrar', JSON.stringify(datosFinales), 'post')
+      setmsjexito(true)
+      err_caja.current.style.display = 'none'
+      clearErrors('conflict')
+      setTimeout(() => setModalRegistro(false), 3000)
+    } catch(err) {
+      let error: Array<string|boolean> = await err.json()
+      if(error[0]) setError('Alias', { type: 'conflict', message: 'El alias de usuario ya existe en nuestros registros, intente con otro' }, { shouldFocus: true })
+      else setError('Email', { type: 'conflict', message: 'La direccion de E-mail ya existe en nuestros registros, intente con otra' }, { shouldFocus: true })
+    }
+  }
 
   return (
-    <div id="registroform_fondo">
+    <div id="registroform_fondo" ref={contenedor}>
       <div id="registro_contenedor">
-        <form onSubmit={handleSubmit(mostrar)}>
-          <div className="regitro_campo">
-            <label>Alias</label>
-            <input type="text" {...register('Alias', {
+        <AiFillCloseCircle id="cerrar_icono" onClick={() => {
+          animarCierreModal()
+          setTimeout(() => setModalRegistro(false), 250)
+        }}></AiFillCloseCircle>
+        <form id="registro_form" onSubmit={handleSubmit(registrar)}>
+          <div className="registro_campo">
+            <label>ALIAS</label>
+            <input type="text" title="Ingrese el alias nuevo para su cuenta" {...register('Alias', {
               required: true,
-              pattern: /^\w{5,35}$/g
+              pattern: /^[\w\d\-\.]{7,50}$/g
             })}></input>
           </div>
-          <div className="regitro_campo">
-            <label>Nombres</label>
-            <input type="text" {...register('Nombres', {
+          <div className="registro_campo">
+            <label>NOMBRES</label>
+            <input type="text" title="Ingrese su nombre completo" {...register('Nombres', {
               required: true,
-              pattern: /^[a-zA-Z]{2,50}(\s)*([a-zA-Z]{2,50})?$/g
+              pattern: /^[A-Z][a-z]{1,50}(\s)*([A-Z][a-z]{1,50})?$/g
             })}></input>
           </div>
-          <div className="regitro_campo">
-            <label>Apellido</label>
-            <input type="text" {...register('Apellido', {
+          <div className="registro_campo">
+            <label>APELLIDO</label>
+            <input type="text" title="Ingrese su apellido" {...register('Apellido', {
               required: true,
-              pattern: /^[a-zA-Z]{2,50}$/
+              pattern: /^[A-Z][a-z]{1,50}\s[A-Z][a-z]{1,50}$/
             })}></input>
           </div>
-          <div className="regitro_campo">
-            <label>Fecha De Nacimiento</label>
+          <div className="registro_campo">
+            <label>EDAD</label>
+            <input type="number" min='0' title="Ingrese su edad" {...register('Edad', {
+              required: true,
+              pattern: /^([0-9]{1,2}|1[0-3][0-9])$/g
+            })}></input>
+          </div>
+          <div className="registro_campo">
+            <label>FECHA DE NACIMIENTO</label>
 
               <select title='Seleccione su dia de nacimiento' defaultValue={1}{...register('DiaNac', {
                 required: true
@@ -80,18 +105,18 @@ export default function RegistroForm(): JSX.Element {
               <select title='Seleccione su mes de nacimiento' defaultValue={'ENERO'} {...register('MesNac', {
                 required: true,
               })} onChange={(e) => setmes(e.target.value as Meses)}>
-                <option value='ENERO'>ENERO</option>
-                <option value='FEBRERO'>FEBRERO</option>
-                <option value='MARZO'>MARZO</option>
-                <option value='ABRIL'>ABRIL</option>
-                <option value='MAYO'>MAYO</option>
-                <option value='JUNIO'>JUNIO</option>
-                <option value='JULIO'>JULIO</option>
-                <option value='AGOSTO'>AGOSTO</option>
-                <option value='SEPTIEMBRE'>SEPTIEMBRE</option>
-                <option value='OCTUBRE'>OCTUBRE</option>
-                <option value='NOVIEMBRE'>NOVIEMBRE</option>
-                <option value='DICIEMBRE'>DICIEMBRE</option>
+                <option value='1'>ENERO</option>
+                <option value='2'>FEBRERO</option>
+                <option value='3'>MARZO</option>
+                <option value='4'>ABRIL</option>
+                <option value='5'>MAYO</option>
+                <option value='6'>JUNIO</option>
+                <option value='7'>JULIO</option>
+                <option value='8'>AGOSTO</option>
+                <option value='9'>SEPTIEMBRE</option>
+                <option value='10'>OCTUBRE</option>
+                <option value='11'>NOVIEMBRE</option>
+                <option value='12'>DICIEMBRE</option>
               </select>
 
               <select title='seleccione su año de nacimiento' defaultValue={añobase()} {...register('AñoNac', {
@@ -103,32 +128,50 @@ export default function RegistroForm(): JSX.Element {
               </select>
 
           </div>
-          <div className="regitro_campo">
-            <label>Edad</label>
-            <input type="number" min='0' {...register('Edad', {
+          <div className="registro_campo">
+            <label>E-MAIL</label>
+            <input type="text" title="Ingrese su direccion de E-Mail" {...register('Email', {
               required: true,
-              pattern: /^([0-9]{1,2}|1[0-3][0-9])$/g
+              pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
             })}></input>
           </div>
-          <div className="regitro_campo">
-            <label>E-mail</label>
-            <input type="text" {...register('Email', {
-              required: true
+          <div className="registro_campo">
+            <label>TELEFONO</label>
+            <input type="text" title="Ingrese su numero de contacto" {...register('Telefono', {
+              required: true,
+              pattern: /^\d{7,30}$/g
             })}></input>
           </div>
-          <div className="regitro_campo">
-            <label>Telefono/Celular</label>
-            <input type="text" {...register('Telefono', {
-              required: true
+          <div className="registro_campo">
+            <label>CONTRASEÑA</label>
+            <input type="password" title="Ingrese la nueva contraseña" {...register('Contraseña', {
+              required: true,
+              pattern: /^[-.\w\d]{10,150}$/g,
+              validate: (pass) => validarContraseña(pass) === true
             })}></input>
           </div>
-          <div className="regitro_campo">
-            <label>Contraseña</label>
-            <input type="password" {...register('Contraseña', {
-              required: true
-            })}></input>
+          <div id="err_caja" ref={err_caja}>
+            { errors.Alias?.type === 'pattern' ? <div id='err_msg'>El alias debe contar con minimo 7 digitos y maximo 50, puede tener letras, numeros y los simbolos '.', '-' y '_'</div>
+            : errors.Alias?.type === 'required' ? <div id='err_msg'>El campo Alias es obligatorio</div>
+            : errors.Alias?.type === 'conflict' ? <div>  { errors.Alias?.message as any }  </div>
+            : errors.Nombres?.type === 'pattern' ? <div id='err_msg'>El campo Nombre debe tener uno o dos nombres comenzados con mayusculas y separados por espacio</div>
+            : errors.Nombres?.type === 'required' ? <div id='err_mgs'>El campo Nombres es obligatorio</div>
+            : errors.Apellido?.type === 'pattern' ? <div id='err_msg'>El campo Apellido debe tener uno o dos nombres comenzados con mayusculas y separados por espacio</div>
+            : errors.Apellido?.type === 'required' ? <div id='err_mgs'>El campo Apellido es obligatorio</div>
+            : errors.Edad?.type === 'pattern' ? <div id='err_msg'>El campo edad contiene un valor incorrecto</div>
+            : errors.Edad?.type === 'required' ? <div id='err_msg'>El campo Edad es obligatorio</div>
+            : errors.Email?.type === 'pattern' ? <div id='err_msg'>El campo EMail contiene una cadena invalida</div>
+            : errors.Email?.type === 'required' ? <div id='err_msg'>El campo EMail es obligatorio</div>
+            : errors.Email?.type === 'conflict' ? <div> { errors.Email?.message as any } </div>
+            : errors.Telefono?.type === 'pattern' ? <div id='err_msg'>El campo telefono debe contener solo numeros</div>
+            : errors.Telefono?.type === 'required' ? <div id="err_msg">El campo Telefono es obligatorio</div>
+            : errors.Contraseña?.type === 'pattern' ? <div id='err_msg'>El campo Contraseña debe tener una longitud de 10 a 150 caracteres</div>
+            : errors.Contraseña?.type === 'required' ? <div id='err_msg'>El campo Contraseña es obligatorio</div>
+            : errors.Contraseña?.type === 'validate' ? <div id='err_msg'>El campo Contraseña debe tener al menos un digito, una letra minuscula y una mayuscula</div>
+            : <></>
+            }
           </div>
-         
+          { msjexito && <div id='exito_msg'>Has sido registrado correctamente! inicia sesion con el usuario y contraseña registrados</div> }
           <input type="submit" value={'REGISTRARME'}></input>
         </form>
       </div>

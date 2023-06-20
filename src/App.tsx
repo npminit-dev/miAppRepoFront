@@ -9,33 +9,16 @@ import './estilos/app.css'
 import PieDePagina from "./componentes/PieDePagina";
 import LogForm from './componentes/LogForm';
 import CookiesModal from "./componentes/CookiesModal";
-import RegistroForm from "./componentes/RegistroForm";
-
-function cargarCookie() {
-
-}
-
-function crearCookie() {
-
-}
 
 export default function App() { 
 
-  window.addEventListener('load', () => {
-
-  })
-
-  const { carrito, jwt, total, datosusuario } = useContext(General)
-
-
   return (
     <div id="app">
-      {/* <Navbar></Navbar>
+      <Navbar></Navbar>
       <Contenido></Contenido>
       <PieDePagina></PieDePagina>
       <LogForm></LogForm>
-      <CookiesModal></CookiesModal> */}
-      <RegistroForm></RegistroForm>
+      <CookiesModal></CookiesModal>
     </div>
   )
 }

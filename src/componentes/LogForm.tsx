@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { LogUsuarioForm } from "~/interfaces/Interfaces";
+import { LogUsuarioForm } from "../interfaces/Interfaces";
 import '../estilos/logform.css'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { General } from "../contextos/General";
 import { crearGalleta, fetchData } from "../utilidades/funciones";
 import { useRef } from 'react';
+import RegistroForm from "./RegistroForm";
 
 export default function LogForm(): JSX.Element {
 
@@ -17,6 +18,7 @@ export default function LogForm(): JSX.Element {
   const boton_iniciosesion = useRef<HTMLInputElement>()
 
   const [iniciando, setiniciando] = useState<boolean>(false)
+  const [modalRegistro, setModalRegistro] = useState<boolean>(false);
 
   const cerrarModal = () => loginformvisible ? setloginformvisible(false) : setloginformvisible(true)
 
@@ -63,12 +65,15 @@ export default function LogForm(): JSX.Element {
             <input id="submit" type="submit" value={ iniciando ? 'INICIANDO...' : 'INICIAR SESION' } ref={boton_iniciosesion}/>
             <span className="err_msg" ref={sesionerrs}></span>
           </div>
-          <a href="#" id="boton_registro">Quiero registrarme</a>
+          <a href="#" id="boton_registro" onClick={() => {
+            setModalRegistro(true); 
+            setloginformvisible(false)}}
+          >Quiero registrarme</a>
         </form>
       </div>  
     </div>
-    : <></>
-    }
+    : <></> }
+      { modalRegistro && <RegistroForm setModalRegistro={setModalRegistro}></RegistroForm>}
     </>
   )
 }
