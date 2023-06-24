@@ -1,11 +1,13 @@
 import Cookies from 'js-cookie'
 import { Meses } from '../interfaces/Interfaces'
+import { ComponentRef, Dispatch, RefObject } from 'react'
+import SetStateAction from 'react';
 
 export const cookiename = '1AcFGGG.aas__243#$5'
 
-export function fetchData(dir: string, body: string, method: string): Promise<any> {
+export function fetchData(dir: string, body: string, method: string, header: string): Promise<any> {
   return new Promise((res, rej) => {
-    fetch(dir, { body: body, method: method, headers: { 'Content-Type': 'application/json' }} as RequestInit)
+    fetch(dir, { body: body, method: method, headers: { 'Content-Type': `${header}` }} as RequestInit)
       .then(response => {
         if(response.ok) (response.text() || response.json()).then(response => res(response))
         else if(response.status == 404) rej(response)
@@ -50,3 +52,30 @@ export const validarContraseña = (cadena: string): boolean => {
   }
   return tieneNumero && tieneMinus && tieneMayus
 }
+
+export const animarCierreModal = (elemento: RefObject<HTMLElement>, funcionEstado?: Function) => {
+  elemento.current.animate([{opacity: 1}, { opacity: 0, display: 'none' }], { duration: 150, fill: 'forwards' })
+    .onfinish = (e) => !funcionEstado ? elemento.current.style.display = 'none' : funcionEstado(false)
+}
+
+export const revertirFecha = ( cadena: string ): string => cadena.split('-').reverse().join('-')
+
+export const normalizarCamelCase = (cadena: string): string => {
+  let normalizada = "";
+  let primeraPalabra = true;
+  for (let i = 0; i < cadena.length; i++) {
+    if (cadena[i] === cadena[i].toUpperCase()) {
+      normalizada += " ";
+      if (primeraPalabra) {
+        normalizada += cadena[i];
+        primeraPalabra = false;
+      } else normalizada += cadena[i].toLowerCase();
+    } else normalizada += cadena[i];
+  }
+  return normalizada;
+};
+
+export const recortarDateDB = (cadena: string) => cadena.split('T')[0]
+
+
+  

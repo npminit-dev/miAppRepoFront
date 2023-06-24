@@ -8,8 +8,6 @@ const defValues: GeneralTipo = {
   setjwt: (): null => null,
   cookiesenabled: undefined,
   setcookiesenabled: (): null => null,
-  datosusuario: undefined,
-  setdatosusuario: (): null => null,
   carrito: [] as Carrito_Prod[],
   setcarrito: (): null => null,
   total: 0.0,
@@ -21,31 +19,31 @@ const defValues: GeneralTipo = {
   loginformvisible: false,
   setloginformvisible: (): null => null,
   registroformvisible: false,
-  setregistroformvisible: (): null => null
+  setregistroformvisible: (): null => null,
+  perfilvisible: false,
+  setperfilvisible: (): null => null
 }
 
 export const General = createContext<GeneralTipo>(defValues);
 
 export default function GeneralProvider({children}: any): JSX.Element{
 
-  useEffect(() => {
-    if(localStorage.getItem('cookiesenabled') == 'true') setcookiesenabled(true)
-    else if(localStorage.getItem('cookiesenabled') == 'false') setcookiesenabled(false)
-    else Cookies.remove(cookiename)
-    if(Cookies.get(cookiename)) {
-      setjwt(Cookies.get(cookiename))
-    }
-  }, [])
-
   const [jwt, setjwt] = useState('');
   const [cookiesenabled, setcookiesenabled] = useState(undefined)
-  const [datosusuario, setdatosusuario] = useState({} as DatosUsuario)
   const [carrito, setcarrito] = useState([] as Carrito_Prod[])
   const [total, settotal] = useState(0)
   const [seleccion, setseleccion] = useState('INICIO' as Seleccion)
   const [anchopantalla, setanchopantalla] = useState(window.innerWidth)
   const [loginformvisible, setloginformvisible] = useState(false)
   const [registroformvisible, setregistroformvisible] = useState(false)
+  const [perfilvisible, setperfilvisible] = useState(false)
+
+  useEffect(() => {
+    if(localStorage.getItem('cookiesenabled') == 'true') setcookiesenabled(true)
+    else if(localStorage.getItem('cookiesenabled') == 'false') setcookiesenabled(false)
+    else Cookies.remove(cookiename)
+    if(Cookies.get(cookiename)) setjwt(Cookies.get(cookiename))
+  }, [])
 
   window.addEventListener('resize', () => {
     setanchopantalla(window.innerWidth)
@@ -57,8 +55,6 @@ export default function GeneralProvider({children}: any): JSX.Element{
       setjwt, 
       cookiesenabled,
       setcookiesenabled,
-      datosusuario, 
-      setdatosusuario, 
       carrito, 
       setcarrito, 
       total, 
@@ -70,7 +66,9 @@ export default function GeneralProvider({children}: any): JSX.Element{
       loginformvisible, 
       setloginformvisible, 
       registroformvisible, 
-      setregistroformvisible
+      setregistroformvisible,
+      perfilvisible,
+      setperfilvisible
     }}>
       {children}
     </General.Provider>

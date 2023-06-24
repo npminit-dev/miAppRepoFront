@@ -1,6 +1,6 @@
-import Home from '../componentes/Home'
-import Tienda from '../componentes/Tienda'
-import Contacto from '../componentes/Contacto'
+import Home from '../componentes/contenido/Home'
+import Tienda from '../componentes/contenido/Tienda'
+import Contacto from '../componentes/contenido/Contacto'
 
 // producto
 
@@ -33,6 +33,26 @@ export interface DatosUsuario {
   Contraseña: string
 }
 
+export interface DatosUsuarioPerfil {
+  AliasUsuario: string,
+  Nombres: string,
+  Apellido: string,
+  FechaDeNacimiento: string,
+  Edad: number,
+  Email: string,
+  Telefono: string,
+  FechaDeRegistro: string
+}
+
+export interface DatosModificables {
+  AliasUsuario: string,
+  Nombres: string,
+  Apellido: string,
+  FechaDeNacimiento: string,
+  Edad: number,
+  Telefono: string,
+}
+
 export interface LogUsuarioForm {
   AliasUsuario: string,
   Contraseña: string
@@ -54,9 +74,7 @@ export interface GeneralTipo {
   jwt: string,
   setjwt: (jwt: string) => any,
   cookiesenabled: boolean | undefined,
-  setcookiesenabled: (set: boolean) => any,
-  datosusuario: DatosUsuario
-  setdatosusuario: (datos: DatosUsuario) => any
+  setcookiesenabled: (set: boolean) => any
   carrito: Carrito_Prod[],
   setcarrito: (carritos: Carrito_Prod[]) => any,
   total: number,
@@ -69,6 +87,8 @@ export interface GeneralTipo {
   setloginformvisible: (visible: boolean) => any,
   registroformvisible: boolean,
   setregistroformvisible: (visible: boolean) => any
+  perfilvisible: boolean,
+  setperfilvisible: (visible: boolean) => any
 }
 
 // navbar
@@ -91,3 +111,8 @@ export default interface contacto{
 // registro
 
 export type Meses = 'ENERO' | 'FEBRERO' | 'MARZO' | 'ABRIL' | 'MAYO' | 'JUNIO' | 'JULIO' | 'AGOSTO' | 'SEPTIEMBRE' | 'OCTUBRE' | 'NOVIEMBRE' | 'DICIEMBRE'
+
+
+// perfil
+
+export type DatosModo = 'MUESTRA' | 'EDICION'

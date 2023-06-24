@@ -1,0 +1,63 @@
+.dato_contenedor {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 15px 0;
+  border-bottom: 1px dotted black;
+  gap: 5px;
+  box-sizing: border-box;
+}
+
+.etiqueta_dato {
+  justify-self: start;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.valor_dato {
+  justify-self: end;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-right: 3px;
+}
+
+@media (max-width: 783px) AND (min-width: 488px) {
+  .dato_contenedor{
+    display: grid;
+    grid-template-columns: unset;
+    grid-template-rows: 50% 50%;
+    padding: 10px 0;
+  }
+
+  .etiqueta_dato {
+    font-size: 14px;
+  }
+
+  .valor_dato {
+    justify-self: start;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 488px) {
+  .dato_contenedor{
+    display: grid;
+    grid-template-columns: unset;
+    grid-template-rows: 50% 50%;
+    margin: 5px 0;
+    height: 50px;
+    padding: 2px 0;
+    gap: 0;
+  }
+
+  .etiqueta_dato {
+    font-size: 10px;
+  }
+
+  .valor_dato {
+    justify-self: start;
+    font-size: 10px;
+  }
+}

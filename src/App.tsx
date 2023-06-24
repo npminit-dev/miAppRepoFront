@@ -1,14 +1,11 @@
 import React, { useContext } from "react"
-import { FaShopify } from 'react-icons/fa'
-import Estrellas_miniatura from "./componentes/Estrellas_miniatura";
-import { General } from "./contextos/General";
-import { Producto } from './interfaces/Interfaces';
-import Navbar from './componentes/Navbar';
-import Contenido from "./componentes/Contenido";
+import Navbar from './componentes/navegacion/Navbar';
+import Contenido from "./componentes/contenido/Contenido";
 import './estilos/app.css'
-import PieDePagina from "./componentes/PieDePagina";
-import LogForm from './componentes/LogForm';
-import CookiesModal from "./componentes/CookiesModal";
+import PieDePagina from "./componentes/navegacion/PieDePagina";
+import LogForm from './componentes/usuario/LogForm';
+import CookiesModal from "./componentes/usuario/CookiesModal";
+import Perfil from "./componentes/usuario/Perfil";
 
 export default function App() { 
 
@@ -19,6 +16,7 @@ export default function App() {
       <PieDePagina></PieDePagina>
       <LogForm></LogForm>
       <CookiesModal></CookiesModal>
+      <Perfil></Perfil>
     </div>
   )
 }

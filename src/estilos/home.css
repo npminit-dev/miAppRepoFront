@@ -1,15 +1,16 @@
 /* contenedor de la seccion home */
 #home_contenedor {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* contenedor de las imagenes de presentacion de fondo */
 #img_contenedor {
-  position: relative;
-  min-height: 120vh;
-  width: 100%;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #333333;
 }
 
 /* imagenes de la presentacion de fondo */
