@@ -5,7 +5,8 @@ import './estilos/app.css'
 import PieDePagina from "./componentes/navegacion/PieDePagina";
 import LogForm from './componentes/usuario/LogForm';
 import CookiesModal from "./componentes/usuario/CookiesModal";
-import Perfil from "./componentes/usuario/Perfil";
+import Perfil from "./componentes/usuario/perfil/Perfil";
+import Carrito from "./componentes/usuario/carrito/Carrito";
 
 export default function App() { 
 
@@ -17,6 +18,7 @@ export default function App() {
       <LogForm></LogForm>
       <CookiesModal></CookiesModal>
       <Perfil></Perfil>
+      <Carrito></Carrito>
     </div>
   )
 }

@@ -10,8 +10,6 @@ const defValues: GeneralTipo = {
   setcookiesenabled: (): null => null,
   carrito: [] as Carrito_Prod[],
   setcarrito: (): null => null,
-  total: 0.0,
-  settotal: (): null => null,
   seleccion: 'INICIO',
   setseleccion: (): null => null,
   anchopantalla: window.innerWidth,
@@ -21,7 +19,9 @@ const defValues: GeneralTipo = {
   registroformvisible: false,
   setregistroformvisible: (): null => null,
   perfilvisible: false,
-  setperfilvisible: (): null => null
+  setperfilvisible: (): null => null,
+  carritovisible: false,
+  setcarritovisible: (): null => null 
 }
 
 export const General = createContext<GeneralTipo>(defValues);
@@ -31,12 +31,12 @@ export default function GeneralProvider({children}: any): JSX.Element{
   const [jwt, setjwt] = useState('');
   const [cookiesenabled, setcookiesenabled] = useState(undefined)
   const [carrito, setcarrito] = useState([] as Carrito_Prod[])
-  const [total, settotal] = useState(0)
   const [seleccion, setseleccion] = useState('INICIO' as Seleccion)
   const [anchopantalla, setanchopantalla] = useState(window.innerWidth)
   const [loginformvisible, setloginformvisible] = useState(false)
   const [registroformvisible, setregistroformvisible] = useState(false)
   const [perfilvisible, setperfilvisible] = useState(false)
+  const [carritovisible, setcarritovisible] = useState(false)
 
   useEffect(() => {
     if(localStorage.getItem('cookiesenabled') == 'true') setcookiesenabled(true)
@@ -57,8 +57,6 @@ export default function GeneralProvider({children}: any): JSX.Element{
       setcookiesenabled,
       carrito, 
       setcarrito, 
-      total, 
-      settotal, 
       seleccion, 
       setseleccion, 
       anchopantalla, 
@@ -68,7 +66,9 @@ export default function GeneralProvider({children}: any): JSX.Element{
       registroformvisible, 
       setregistroformvisible,
       perfilvisible,
-      setperfilvisible
+      setperfilvisible,
+      carritovisible,
+      setcarritovisible
     }}>
       {children}
     </General.Provider>

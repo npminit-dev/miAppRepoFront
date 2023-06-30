@@ -54,9 +54,18 @@ export default function Navbar(): JSX.Element {
          }
         <Logo setseleccion={setseleccion}></Logo>
         <div id='navbar_item_container'>
-          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'INICIO')}>INICIO</div>
-          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}>TIENDA</div>
-          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'CONTACTO')}>CONTACTO</div>
+          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'INICIO')}>
+            INICIO
+            <div className='navbar_item_borde'></div>
+          </div>
+          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'PRODUCTOS')}>
+            TIENDA
+            <div className='navbar_item_borde'></div>
+          </div>
+          <div className='navbar_item' onClick={(e) => manejarSeleccion(e, 'CONTACTO')}>
+            CONTACTO
+            <div className='navbar_item_borde'></div>
+          </div>
         </div>
         <Perfil_boton></Perfil_boton>
       </nav>

@@ -1,10 +1,9 @@
 import React, { SetStateAction } from 'react'
-import { DatosModo, DatosUsuarioPerfil } from '../../interfaces/Interfaces';
-import Dato from './Dato';
-import { AiFillEdit } from 'react-icons/ai';
+import { DatosModo, DatosUsuarioPerfil } from '../../../interfaces/Interfaces';
+import Dato from '../perfil/Dato';
 import { Dispatch } from 'react';
-import '../../estilos/datos.css'
-import { recortarDateDB, revertirFecha } from '../../utilidades/funciones';
+import '../../../estilos/datos.css'
+import { recortarDateDB, revertirFecha } from '../../../utilidades/funciones';
 
 type props = {
   datos: DatosUsuarioPerfil,

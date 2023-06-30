@@ -5,13 +5,13 @@ import SetStateAction from 'react';
 
 export const cookiename = '1AcFGGG.aas__243#$5'
 
-export function fetchData(dir: string, body: string, method: string, header: string): Promise<any> {
+export function fetchData(dir: string, body: string | JSON, method: string, header: string): Promise<any> {
   return new Promise((res, rej) => {
     fetch(dir, { body: body, method: method, headers: { 'Content-Type': `${header}` }} as RequestInit)
       .then(response => {
         if(response.ok) (response.text() || response.json()).then(response => res(response))
         else if(response.status == 404) rej(response)
-        else rej(response)
+        else rej(response.text())
       }).catch(err => {
         console.log(err)
       })

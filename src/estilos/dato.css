@@ -10,14 +10,14 @@
 .etiqueta_dato {
   justify-self: start;
   font-weight: bold;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 16px;
   box-sizing: border-box;
 }
 
 .valor_dato {
   justify-self: end;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 16px;
   box-sizing: border-box;
   margin-right: 3px;

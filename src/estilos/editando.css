@@ -1,0 +1,11 @@
+#editando_contenedor {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+  background-color: #3333333b;
+}
+
+#editando_texto {
+  font-style: italic;
+}

@@ -84,6 +84,12 @@
   color: green;
 }
 
+#editando_msj {
+  width: 100%;
+  height: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
 @media (max-width: 545px) AND (min-width: 310px) {
   #guardar-salir_botones {
     grid-template-columns: unset;
@@ -105,6 +111,14 @@
     justify-self: center;
     font-size: 12px;
   }
+
+  .m_input_contenedor label {
+    font-size: 12px;
+  }
+
+  .m_input_contenedor input {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 310px) {
@@ -115,8 +129,7 @@
 
   #guardar_boton {
     width: unset;
-    width: 80px;
-    max-width: 100%;
+    width: 100%;
     justify-self: center;
     font-size: 9px;
     justify-content: space-around;
@@ -124,10 +137,17 @@
 
   #salir_boton {
     width: unset;
-    width: 80px;
-    max-width: 100%;
+    width: 100%;
     justify-self: center;
     font-size: 9px;
     justify-content: space-around;
+  }
+
+  .m_input_contenedor label {
+    font-size: 11px;
+  }
+
+  .m_input_contenedor input {
+    font-size: 11px;
   }
 }

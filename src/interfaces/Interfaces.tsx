@@ -1,6 +1,7 @@
 import Home from '../componentes/contenido/Home'
 import Tienda from '../componentes/contenido/Tienda'
 import Contacto from '../componentes/contenido/Contacto'
+import { Dispatch, SetStateAction } from 'react'
 
 // producto
 
@@ -72,23 +73,23 @@ export interface Carrito_Prod {
 
 export interface GeneralTipo {
   jwt: string,
-  setjwt: (jwt: string) => any,
+  setjwt: Dispatch<SetStateAction<string>>,
   cookiesenabled: boolean | undefined,
-  setcookiesenabled: (set: boolean) => any
+  setcookiesenabled: Dispatch<SetStateAction<boolean|undefined>>
   carrito: Carrito_Prod[],
-  setcarrito: (carritos: Carrito_Prod[]) => any,
-  total: number,
-  settotal: (total: number) => any,
+  setcarrito: Dispatch<SetStateAction<Carrito_Prod[]>>,
   seleccion: Seleccion,
-  setseleccion: (seleccion: Seleccion) => any,
+  setseleccion: Dispatch<SetStateAction<Seleccion>>,
   anchopantalla: number,
-  setanchopantalla: (ancho: number | undefined) => any,
+  setanchopantalla: Dispatch<SetStateAction<number>>,
   loginformvisible: boolean,
-  setloginformvisible: (visible: boolean) => any,
+  setloginformvisible: Dispatch<SetStateAction<boolean>>,
   registroformvisible: boolean,
-  setregistroformvisible: (visible: boolean) => any
+  setregistroformvisible: Dispatch<SetStateAction<boolean>>,
   perfilvisible: boolean,
-  setperfilvisible: (visible: boolean) => any
+  setperfilvisible: Dispatch<SetStateAction<boolean>>,
+  carritovisible: boolean,
+  setcarritovisible: Dispatch<SetStateAction<boolean>>
 }
 
 // navbar

@@ -6,7 +6,7 @@ import { FaUserCircle } from 'react-icons/fa'
 
 export default function Perfil_boton(): JSX.Element{
 
-  const { jwt, loginformvisible, setloginformvisible, setperfilvisible } = useContext(General)
+  const { jwt, loginformvisible, setloginformvisible, setperfilvisible, setcarritovisible } = useContext(General)
 
   const sesionmodal = () => {
     loginformvisible ? setloginformvisible(false) : setloginformvisible(true)
@@ -17,8 +17,12 @@ export default function Perfil_boton(): JSX.Element{
       { (!jwt) 
       ? <div id='iniciar_sesion' onClick={sesionmodal}>INICIAR SESION</div>
       : <div id='perfil_container'>
-          <div id='carr_logo_container'><TiShoppingCart id='carr_logo'></TiShoppingCart></div>
-          <div id='perfil' onClick={() => setperfilvisible(true)}><FaUserCircle id='perfil_icono'></FaUserCircle></div> 
+          <div id='carr_logo_container'
+            onClick={() => setcarritovisible(true)}
+          ><TiShoppingCart id='carr_logo'></TiShoppingCart></div>
+          <div id='perfil' 
+            onClick={() => setperfilvisible(true)}
+          ><FaUserCircle id='perfil_icono'></FaUserCircle></div> 
         </div> 
       }
     </>

@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction, useRef, useEffect, useState } from "react";
 import { useForm } from 'react-hook-form'
 import { DatosModificables, DatosModo, DatosUsuarioPerfil } from "~/interfaces/Interfaces";
-import { cookiename, fetchData, recortarDateDB, revertirFecha } from '../../utilidades/funciones';
+import { cookiename, fetchData, recortarDateDB, revertirFecha } from '../../../utilidades/funciones';
 import * as isoDatestringValidator from 'iso-datestring-validator';
 import Cookies from "js-cookie";
 import { BiExit, BiSave } from 'react-icons/bi'
-import '../../estilos/modificardatos.css'
+import '../../../estilos/modificardatos.css'
+import Editando from "../../Editando";
 
 type props = {
   datos: DatosUsuarioPerfil
@@ -62,7 +63,7 @@ export default function ModificarDatos({ datos, setdatos, jwt, setjwt, setmodo }
 
   return (
     <section id="modificar_seccion">
-      <span id="editando_msj">editando</span>
+      <Editando></Editando>
       <form id="modificar_form" onSubmit={handleSubmit(manejarSubtmit)}>
         <div className='m_input_contenedor'>
           <label>Alias:</label>

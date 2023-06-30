@@ -23,11 +23,11 @@ export default function Imgs_Home({imgarr}: props): JSX.Element {
       while(index >= 0) {
         await delay(2250);
         if (index !== 0) {
-          await animarimg(imgRefs.current[index])
+          await animarImg(imgRefs.current[index])
           index --;
         } else {
           imgRefs.current[imgRefs.current.length - 1].animate(keyframe.slice().reverse(), opts)
-          await animarimg(imgRefs.current[index])
+          await animarImg(imgRefs.current[index])
           limpiarTimersYAnimaciones();
           index = imgRefs.current.length - 1
         }
@@ -50,10 +50,14 @@ export default function Imgs_Home({imgarr}: props): JSX.Element {
     })
   }
 
-  const animarimg = async (img: HTMLImageElement): Promise<string> => {
+  const animarImg = async (img: HTMLImageElement): Promise<string> => {
     return new Promise((res, rej) => {
-      settimers(timers => [...timers, setTimeout(() => res(''), opts.duration as number)])
-      setanimaciones(animaciones => [...animaciones, img.animate(keyframe, opts)])
+      try {
+        settimers(timers => [...timers, setTimeout(() => res(''), opts.duration as number)])
+        setanimaciones(animaciones => [...animaciones, img?.animate(keyframe, opts)])
+      } catch(err) {
+        console.log(`Error en animarImg: ${err}`)
+      }
     })
   }
 
@@ -63,7 +67,7 @@ export default function Imgs_Home({imgarr}: props): JSX.Element {
       imgRefs.current.forEach(img => img?.animate([{ opacity: 1, transform: 'scale(100%, 100%)' }], {duration: 0, fill: 'forwards'}))
       animaciones.forEach(anim => anim?.cancel())
     } catch(error) {
-      alert(`Error en Imgs_Home.tsx: ${error}`)
+      alert(`Error en LimpiarTimersYAnimaciones: ${error}`)
     }
     settimers([])
     setanimaciones([])

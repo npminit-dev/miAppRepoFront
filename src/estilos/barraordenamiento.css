@@ -1,0 +1,134 @@
+:root {
+  --verde-oscuro1: #006400;
+  --verde-oscuro2: #257D25;
+  --verde-medio: #00B000;
+  --verde-claro1: #35B035;
+  --verde-claro2: #00FC00;
+  --lila-claro: #B00058;
+  --lila-oscuro: #630032;
+  --ladrillo-claro: #B02912;
+  --ladrillo-oscuro: #631305;
+}
+
+.modoflecha {
+  background-color: var(--lila-claro);
+  border-radius: 100%;
+  color: white;
+}
+
+.desc {
+  animation-name: girarmitad;
+  animation-duration: .15s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.asc {
+  animation-name: girarmitad2;
+  animation-duration: .15s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes girarmitad {
+  0% {
+    transform: rotate(-180deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes girarmitad2 {
+  0% {
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+#barraord_contenedor {
+  width: 100%;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  background: var(--verde-oscuro1);
+  padding: 0 2px;
+}
+
+.btn_criterio {
+  height: 25px;
+  min-width: 90px;
+  max-width: 130px;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 2px;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  color: #f5f5f5;
+}
+
+.btn_criterio:hover {
+  text-decoration: underline;
+}
+
+.btn_criterio > .modoflecha {
+  height: 18px;
+  width: 18px;
+  box-sizing: border-box;
+  color: var(--verde-claro1);
+  background-color: #f5f5f5;
+}
+
+
+@media (max-width: 785px) AND (min-width: 422px) {
+
+  .modoflecha {
+    height: 10px;
+    width: 10px;
+    font-size: 10px;
+  }
+
+  #barraord_contenedor {
+    min-height: 10px;
+  }
+
+  .btn_criterio {
+    height: 20px;
+    font-size: 10px;
+    min-width: 50px;
+    max-width: 90px;
+  }
+}
+
+@media (max-width: 422px) {
+
+  .modoflecha {
+    height: 3px;
+    width: 3px;
+    font-size: 10px;
+    display: none;
+  }
+
+  #barraord_contenedor {
+    min-height: 10px;
+  }
+
+  .btn_criterio {
+    height: 15px;
+    font-size: 10px;
+    min-width: 25px;
+    margin: 0;
+  }
+}
