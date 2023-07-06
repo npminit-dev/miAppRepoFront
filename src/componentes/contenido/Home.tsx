@@ -5,13 +5,12 @@ import TextoPresentacion from "./TextoPresentacion";
 import Imgs_Home from "./Imgs_Home";
 import { General } from "../../contextos/General";
 
-
 export default function Home(): JSX.Element {
 
-  const { anchopantalla } = useContext(General)
+  const { anchopantalla, setcarrito } = useContext(General)
 
   return (
-    <div id="home_contenedor">
+    <main id="home_contenedor">
       <div id="img_contenedor">
         { anchopantalla <= 618
           ? <Imgs_Home imgarr={img_movil}></Imgs_Home>
@@ -21,6 +20,6 @@ export default function Home(): JSX.Element {
       <div id="presentacion_contenedor">
         <TextoPresentacion></TextoPresentacion>
       </div>
-    </div>
+    </main>
   )
 }

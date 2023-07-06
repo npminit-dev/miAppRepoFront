@@ -62,10 +62,10 @@ export default function Contacto(): JSX.Element {
         </div>
         <div id="logos_container">
           <div className="logo_container">
-            <img src={img_contacto_logos[0]} id="sra_logo"></img>
+            <img title="Logo de la sociedad rural argentina" src={img_contacto_logos[0]} id="sra_logo"></img>
           </div>
           <div className="logo_container">
-            <img src={img_contacto_logos[1]} id="ipcva_logo"></img>
+            <img title="Logo de la ipcva" src={img_contacto_logos[1]} id="ipcva_logo"></img>
           </div>
         </div>
       </div>

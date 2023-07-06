@@ -31,7 +31,7 @@ export default function GeneralProvider({children}: any): JSX.Element{
   const [jwt, setjwt] = useState('');
   const [cookiesenabled, setcookiesenabled] = useState(undefined)
   const [carrito, setcarrito] = useState([] as Carrito_Prod[])
-  const [seleccion, setseleccion] = useState('INICIO' as Seleccion)
+  const [seleccion, setseleccion] = useState('PRODUCTOS' as Seleccion)
   const [anchopantalla, setanchopantalla] = useState(window.innerWidth)
   const [loginformvisible, setloginformvisible] = useState(false)
   const [registroformvisible, setregistroformvisible] = useState(false)

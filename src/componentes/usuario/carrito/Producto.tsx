@@ -51,21 +51,20 @@ export default function Producto(p: props): JSX.Element {
       <div className='prod_cantidad_controles'>
         <div className='prod_cantidad_incrementar' title='Quitar unidad'
           onClick={() => decrementar()}>
-          <HiMinus></HiMinus>
+          <HiMinus className='decrementar_ico'></HiMinus>
         </div>
         <div className='prod_cantidad'>{ p.Cantidad } Kg.</div>
         <div className='prod_cantidad_decrementar' title='Agregar unidad'
           onClick={() => incrementar()}>
-          <HiPlus></HiPlus>
+          <HiPlus className='incrementar_ico'></HiPlus>
         </div>  
       </div> 
       <div className='prod_precio' title='Precio x unidad'>U$D { p.Precio }</div>
       <div className='prod_subtotal' title='Subtotal'>U$D { p.Subtotal.toFixed(2) }</div>
       <button className='del_btn' type='button' title='Eliminar producto del carrito'
         onClick={() => manejarDel()}>
-        <AiTwotoneDelete></AiTwotoneDelete>
+        <AiTwotoneDelete className='del_ico'></AiTwotoneDelete>
       </button>
-      
     </div>
   )
 }

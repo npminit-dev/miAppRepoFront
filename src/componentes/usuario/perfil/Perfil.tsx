@@ -7,6 +7,8 @@ import ModificarDatos from '../perfil/ModificarDatos'
 import Datos from '../perfil/Datos'
 import { AiFillEdit } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
+import CerrarSesion from './CerrarSesion'
+import '../../../estilos/cerrarsesion.css'
 
 const datosDefecto: DatosUsuarioPerfil = {
     AliasUsuario: '', 
@@ -40,14 +42,14 @@ export default function Perfil(): JSX.Element {
   const abrirPerfil = () => {
     perfilcontenedor.current?.animate(
       [{ right: `-25px`, opacity: 0, filter: 'grayscale(1)' }, { right: '0', opacity: 1, filter: 'grayscale(0)' }], 
-      { duration: 400, fill: 'forwards', easing: 'cubic-bezier(.1,.9,.51,.98)' }
+      { duration: 300, fill: 'forwards', easing: 'cubic-bezier(.1,.9,.51,.98)' }
     )
   }
 
   const cerrarPerfil = () => {
     perfilcontenedor.current.animate(
       [{ right: '0', opacity: 1, filter: 'grayscale(0)' }, { right: `-25px`, opacity: 0, filter: 'grayscale(1)' }], 
-      { duration: 400, fill: 'forwards', easing: 'cubic-bezier(.73,.15,.9,.25)' }
+      { duration: 300, fill: 'forwards', easing: 'cubic-bezier(.73,.15,.9,.25)' }
     ).onfinish = () => {
       setperfilvisible(false)
       setmodo('MUESTRA')
@@ -81,15 +83,16 @@ export default function Perfil(): JSX.Element {
           <>
             <Datos datos={datos} setmodo={setmodo}></Datos>
             <div id='editar_boton_contenedor'>
-              <button id='editar_boton' onClick={() => setmodo('EDICION')}>
+              <button type='button' id='editar_boton' onClick={() => setmodo('EDICION')}>
                 <span>EDITAR</span>
                 <AiFillEdit></AiFillEdit>
               </button>
-              <button id='cerrar_boton' onClick={() => cerrarPerfil()}>
-                <span>CERRAR</span>
+              <button type='button' id='cerrar_boton' onClick={() => cerrarPerfil()}>
+                <span>SALIR</span>
                 <AiOutlineClose></AiOutlineClose>
               </button>
             </div>
+            <CerrarSesion></CerrarSesion>
           </> 
           }
         </div>

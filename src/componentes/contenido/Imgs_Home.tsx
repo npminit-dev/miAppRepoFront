@@ -26,7 +26,7 @@ export default function Imgs_Home({imgarr}: props): JSX.Element {
           await animarImg(imgRefs.current[index])
           index --;
         } else {
-          imgRefs.current[imgRefs.current.length - 1].animate(keyframe.slice().reverse(), opts)
+          imgRefs?.current[imgRefs.current.length - 1].animate(keyframe.slice().reverse(), opts)
           await animarImg(imgRefs.current[index])
           limpiarTimersYAnimaciones();
           index = imgRefs.current.length - 1

@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+.dato_contenedor:last-child {
+  border-bottom: none;
+}
+
 .etiqueta_dato {
   justify-self: start;
   font-weight: bold;

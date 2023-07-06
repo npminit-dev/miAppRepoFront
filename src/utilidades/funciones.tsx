@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { Meses } from '../interfaces/Interfaces'
+import { Criterio, Meses, Orden, Producto } from '../interfaces/Interfaces'
 import { ComponentRef, Dispatch, RefObject } from 'react'
 import SetStateAction from 'react';
 
@@ -77,5 +77,62 @@ export const normalizarCamelCase = (cadena: string): string => {
 
 export const recortarDateDB = (cadena: string) => cadena.split('T')[0]
 
+export const ordenar = (productos: Producto[], criterio: Criterio, orden: Orden): Promise<Producto[]> => {
+  return new Promise(async(res, rej) => {
+    switch(criterio) {
+      case 'nombre':
+        try {
+          let jsonprods: Response | Producto[] = await fetch('http://localhost:3002/prods/nombre/asc')
+          jsonprods = await jsonprods.json() as Producto[]
+          if(orden === 'desc') jsonprods.reverse()
+          res(jsonprods)
+        } catch(err) {
+          rej(err)
+        } 
+      case 'precio':
+        try {
+          let jsonprods: Response | Producto[] = await fetch('http://localhost:3002/prods/precio/asc')
+          jsonprods = await jsonprods.json() as Producto[]
+          if(orden === 'desc') jsonprods.reverse()
+          res(jsonprods)
+        } catch(err) {
+          rej(err)
+        } 
+      case 'categoria':
+        try {
+          let jsonprods: Response | Producto[] = await fetch('http://localhost:3002/prods/categoria/asc')
+          jsonprods = await jsonprods.json() as Producto[]
+          if(orden === 'desc') jsonprods.reverse()
+          res(jsonprods)
+        } catch(err) {
+          rej(err)
+        } 
+    }
+  })
+}
+
+export const ordenarPorRango = (prodslista: Producto[], limiteinferior: string, limitesuperior: string): Producto[] => {
+  let min = parseInt(limiteinferior)
+  let max = parseInt(limitesuperior)
+  if(isNaN(min) || isNaN(max)) throw new Error('no se han podido convertir los rangos a enteros')
+  return prodslista.reduce((acc, curr) => {
+    if(curr.Precio >= min && curr.Precio <= max) acc[0].push(curr)
+    else acc[1].push(curr)
+    return acc
+  }, [[], []] as Array<Producto[]>).flat()
+}
+
+
+export const ordenarPorBusqueda = (prodslista: Producto[], cadena: string): Producto[] => {
+  console.log(cadena)
+  return prodslista.reduce((acc, curr) => {
+    if(RegExp('^' + cadena + '(.*)?$', 'mi')
+      .test(curr.NombreProducto)) acc[0].push(curr)
+    else if(RegExp('^(.+)' + cadena + '(.*)?$', 'mi')
+      .test(curr.NombreProducto)) acc[1].push(curr)
+    else acc[2].push(curr)
+    return acc
+  }, [[], [], []] as Array<Producto[]>).flat()
+}
 
   

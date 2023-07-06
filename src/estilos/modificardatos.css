@@ -1,4 +1,13 @@
 :root {
+  --verde-oscuro1: #006400;
+  --verde-oscuro2: #257D25;
+  --verde-medio: #00B000;
+  --verde-claro1: #35B035;
+  --verde-claro2: #00FC00;
+  --lila-claro: #B00058;
+  --lila-oscuro: #630032;
+  --ladrillo-claro: #B02912;
+  --ladrillo-oscuro: #631305;
   --borde-perfil: #032840;
 }
 
@@ -25,6 +34,7 @@
   justify-self: start;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
+  color: #c5c5c5;
 }
 
 .m_input_contenedor input {
@@ -34,6 +44,14 @@
   justify-self: start;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  background: #d2d2d2;
+  color: #333333;
+  border: none;
+  border-radius: 2px;
+}
+
+.m_input_contenedor input:focus {
+  outline: none;
 }
 
 #guardar-salir_botones {
@@ -44,10 +62,14 @@
 
 #salir_boton {
   justify-self: start;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
 }
 
 #guardar_boton {
   justify-self: end;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
 }
 
 #salir_boton, #guardar_boton {
@@ -57,15 +79,19 @@
   justify-content: space-evenly;
   width: 120px;
   height: 40px;
-  border: 1px solid var(--borde-perfil);
   color: var(--borde-perfil);
   background-color: #f5f5f5;
-  border-radius: 2px;
   transition-duration: .2s;
+  border: none;
 }
 
-#salir_boton:hover, #guardar_boton:hover {
+#salir_boton:hover {
   background-color: var(--borde-perfil);
+  color: #f5f5f5;
+}
+
+#guardar_boton:hover {
+  background-color: #006400;
   color: #f5f5f5;
 }
 
@@ -73,7 +99,7 @@
   margin-top: 10px;
   height: 40px;
   width: 100%;
-  color: red;
+  color: #f5f5f5;
   font-size: 12px;
   text-align: center;
 }
@@ -81,7 +107,7 @@
 #m_exito_caja {
   height: 100px;
   width: 100%;
-  color: green;
+  color: var(--verde-claro2);
 }
 
 #editando_msj {
@@ -102,6 +128,7 @@
     max-width: 100%;
     justify-self: center;
     font-size: 12px;
+    border-radius: 10px 10px 0  0;
   }
 
   #salir_boton {
@@ -110,6 +137,7 @@
     max-width: 100%;
     justify-self: center;
     font-size: 12px;
+    border-radius: 0 0 10px 10px;
   }
 
   .m_input_contenedor label {
@@ -133,6 +161,7 @@
     justify-self: center;
     font-size: 9px;
     justify-content: space-around;
+    border-radius: 10px 10px 0  0;
   }
 
   #salir_boton {
@@ -141,6 +170,7 @@
     justify-self: center;
     font-size: 9px;
     justify-content: space-around;
+    border-radius: 0 0 10px 10px;
   }
 
   .m_input_contenedor label {
@@ -151,3 +181,5 @@
     font-size: 11px;
   }
 }
+
+

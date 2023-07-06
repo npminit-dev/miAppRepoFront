@@ -47,7 +47,7 @@ export default function Carrito(): JSX.Element {
     contenedor.current.animate([
       { opacity: 1, right: '0', filter: 'grayscale(0)' },
       { opacity: 0, right: '-25px', filter: 'grayscale(1)' }
-    ], { duration: 400, fill: 'forwards', easing: 'cubic-bezier(.73,.15,.9,.25)' })
+    ], { duration: 300, fill: 'forwards', easing: 'cubic-bezier(.73,.15,.9,.25)' })
     .onfinish = () => setcarritovisible(false)
   }
 
@@ -64,7 +64,7 @@ export default function Carrito(): JSX.Element {
     if(carritovisible) contenedor.current.animate([
       { opacity: 0, right: '-25px', filter: 'grayscale(1)' },
       { opacity: 1, right: '0', filter: 'grayscale(0)' }
-    ], { duration: 400, fill: 'forwards', easing: 'cubic-bezier(.1,.9,.51,.98)' })
+    ], { duration: 300, fill: 'forwards', easing: 'cubic-bezier(.1,.9,.51,.98)' })
     return () => {
       if(msjtimer) clearTimeout(msjtimer.current)}
   }, [carritovisible])

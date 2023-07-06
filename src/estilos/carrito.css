@@ -6,8 +6,9 @@
   --verde-claro2: #00FC00;
   --lila-claro: #B00058;
   --lila-oscuro: #630032;
+  --rojo-base: #8B0000;
   --ladrillo-claro: #B02912;
-  --ladrillo-oscuro: #631305;
+  --ladrillo-oscuro: #8b0000a8;
 }
 
 #carrito_fondo {
@@ -29,7 +30,7 @@
   top: 0;
   right: 0;
   box-sizing: border-box;
-  background-color: var(--ladrillo-claro);
+  background-color: #8b00009a;
 }
 
 #carrito_contenedor_interior {
@@ -37,7 +38,7 @@
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--ladrillo-oscuro);
+  background-color: #8b000096;
   color: #f3f3f3;
   overflow-y: auto;
 }
@@ -49,7 +50,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background: linear-gradient(90deg, var(--ladrillo-claro), var(--ladrillo-oscuro), var(--ladrillo-claro));
+  background: linear-gradient(90deg, var(--ladrillo-oscuro), var(--lila-oscuro), var(--lila-oscuro), var(--ladrillo-oscuro));
 }
 
 #carrito_icono {
@@ -63,6 +64,8 @@
   flex-direction: column;
   justify-content: center;
   padding: 5px 5px;
+  background-color: #f5f5f5;
+  border-radius: 2px;
 }
 
 #carrito_total {
@@ -72,6 +75,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   padding: 5px 5px;
+  border-bottom: 1px dashed #f5f5f5;
 }
 
 #carrito_moneda_t {
@@ -88,7 +92,11 @@
 }
 
 #carrito_salir {
-  margin-right: 10px;
+  border-radius: 10px 0 0 10px;
+}
+
+#carrito_guardar {
+  border-radius: 0px 10px 10px 0;
 }
 
 #carrito_salir, #carrito_guardar {
@@ -99,7 +107,6 @@
   justify-content: center;
   transition-duration: .15s;
   border: none;
-  border-radius: 5px;
 }
 
 #carrito_guardar_icono, #carrito_salir_icono {
@@ -111,15 +118,11 @@
 #carrito_guardar:hover {
   color: #f5f5f5;
   background-color: var(--verde-oscuro1);
-  border: 1px solid var(--verde-oscuro1);
-  border-radius: 2px;
 }
 
 #carrito_salir:hover {
   color: #f5f5f5;
   background-color: #032840;
-  border: 1px solid #032840;
-  border-radius: 2px;
 }
 
 #carrito_msj {
@@ -127,6 +130,7 @@
   text-align: center;
   font-size: 12px;
   color: #f5f5f5;
+  margin-bottom: 20px;
 }
 
 

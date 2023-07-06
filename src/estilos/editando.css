@@ -3,9 +3,10 @@
   display: flex;
   align-items: center;
   padding: 2px 0;
-  background-color: #3333333b;
+  background-color: #8B0000;
 }
 
 #editando_texto {
-  font-style: italic;
+  color: #f5f5f5;
+
 }

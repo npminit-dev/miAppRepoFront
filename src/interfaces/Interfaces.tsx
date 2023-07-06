@@ -1,5 +1,5 @@
 import Home from '../componentes/contenido/Home'
-import Tienda from '../componentes/contenido/Tienda'
+import Tienda from '../componentes/contenido/tienda/Tienda'
 import Contacto from '../componentes/contenido/Contacto'
 import { Dispatch, SetStateAction } from 'react'
 
@@ -19,7 +19,13 @@ export interface Producto {
 
 export type Orden = 'asc' | 'desc'
 
-export type Criterio = { activo: boolean, order: Orden }
+export type Criterio = 'nombre' | 'precio' | 'categoria'
+
+export interface EstadoOrd {
+  nombre: Orden,
+  precio: Orden,
+  categoria: Orden
+}
 
 // usuario
 
